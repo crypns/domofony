@@ -1,0 +1,392 @@
+.order_block {
+  max-width: 800px;
+  width: calc(100% - 40px);
+  margin: auto;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  background: -o-radial-gradient(87.73% 0%, 71.97% 105%, #DA6263 0%, #8B1D1E 84.26%);
+  background: radial-gradient(71.97% 105% at 87.73% 0%, #DA6263 0%, #8B1D1E 84.26%);
+  -webkit-box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
+          box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.order_block a {
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#ECECF6));
+  background: -o-linear-gradient(top, #FFFFFF 0%, #ECECF6 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #ECECF6 100%);
+  border-radius: 8px;
+  padding: 10px 20px;
+  position: absolute;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  left: 0;
+  right: 0;
+  top: 15px;
+  margin: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.order_block a h5 {
+  color: #8B1D1E;
+}
+
+.order_block a:hover h5 {
+  color: #165E94;
+}
+
+.order_block .cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: auto;
+}
+
+.order_block .cart h5 {
+  color: #fff;
+  margin-right: 15px;
+}
+
+section.house .address h1,
+section.house .address p {
+  text-align: center;
+}
+
+section.house .address p {
+  margin-top: 20px;
+}
+
+section.house .description {
+  margin: 50px auto 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+section.house .description p {
+  margin: 10px 0;
+}
+
+section.banner.solitary .slider {
+  background: #fff;
+  -webkit-box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
+          box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
+  border-radius: 10px;
+}
+
+section.banner.solitary .item {
+  padding: 25px;
+  gap: 35px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section.banner.solitary .item .img {
+  max-width: 350px;
+  width: 100%;
+}
+
+section.goods .head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+section.goods .head h6 {
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#ECECF6));
+  background: -o-linear-gradient(top, #FFFFFF 0%, #ECECF6 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #ECECF6 100%);
+  -webkit-box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
+          box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
+  border-radius: 8px;
+  padding: 13px 20px;
+}
+
+section.goods .head .cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section.goods .head .cart h5 {
+  color: #9B9CAD;
+  margin-right: 15px;
+}
+
+section.goods .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 8px;
+  background: #fff;
+  gap: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+section.goods .item .object {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+section.goods .item .object .img img {
+  width: 80px;
+  height: 80px;
+}
+
+section.goods .item .object .name {
+  max-width: 300px;
+  width: 100%;
+}
+
+section.goods .item .object .name h6 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+
+section.goods .item .interaction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 15px;
+  width: 60%;
+}
+
+section.goods .item .interaction .price {
+  max-width: 266px;
+}
+
+section.goods .item .interaction .price h4 {
+  text-align: center;
+  white-space: nowrap;
+}
+
+section.goods .item .interaction .button {
+  max-width: 330px;
+  width: 40%;
+}
+
+section.goods .item .interaction .button button {
+  border: 1px solid #8B1D1E;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 4px 8px rgba(214, 214, 231, 0.75), 0px 1px 2px #D6D6E7;
+          box-shadow: 0px 4px 8px rgba(214, 214, 231, 0.75), 0px 1px 2px #D6D6E7;
+  border-radius: 8px;
+  background: #fff;
+  padding: 13px 20px;
+  white-space: nowrap;
+}
+
+section.goods .item .interaction .button button h6 {
+  color: #8B1D1E;
+}
+
+section.goods .item .interaction .button button:hover {
+  background: -o-radial-gradient(87.73% 0%, 71.97% 105%, #DA6263 0%, #8B1D1E 84.26%);
+  background: radial-gradient(71.97% 105% at 87.73% 0%, #DA6263 0%, #8B1D1E 84.26%);
+}
+
+section.goods .item .interaction .button button:hover h6 {
+  color: #fff;
+}
+
+@media (max-width: 1240px) {
+  .order_block {
+    top: 180px;
+  }
+}
+
+@media (max-width: 1150px) {
+  section.goods .item .interaction {
+    width: 50%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  section.goods .item .interaction .price {
+    margin: 0 auto;
+  }
+
+  section.goods .item .interaction .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 820px) {
+  section.goods .item {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  section.goods .item .object {
+    width: 100%;
+  }
+
+  section.goods .item .interaction {
+    width: 100%;
+  }
+
+  section.goods .item .interaction button {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+  }
+}
+
+@media (max-width: 775px) {
+  section.banner.banner.solitary .slider .item {
+    padding: 50px 100px 25px;
+  }
+
+  section.banner.banner.solitary .slider .item .img {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 720px) {
+  .order_block {
+    top: calc(100% - 100px);
+  }
+
+  .order_block .cart h5 span {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  section.banner.banner.solitary .slider .item {
+    padding: 50px 20px 20px;
+  }
+
+  section.banner.banner.solitary .slider .item .text h2 {
+    font-size: 34px;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 540px) {
+  .order_block a {
+    top: 10px;
+    padding: 10px;
+  }
+
+  .order_block a h5 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .order_block .cart h5 {
+    font-size: 20px;
+    line-height: 24px;
+    margin-right: 4px;
+  }
+
+  .order_block .cart div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .order_block .cart div svg {
+    width: 20px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 440px) {
+  section.goods .item .object {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  section.goods .item .interaction .price {
+    width: 100%;
+    margin: 0;
+  }
+
+  section.goods .item .interaction .price h4 {
+    text-align: left;
+  }
+
+  section.goods .item .interaction button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .order_block {
+    padding: 10px;
+  }
+
+  .order_block a {
+    position: relative;
+    margin: 0 auto 0 0;
+    top: 0;
+  }
+
+  .order_block a h5 {
+    font-size: 16px;
+  }
+
+  .order_block .cart {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 360px) {
+  section.house .address h1 {
+    font-size: 34px;
+    line-height: 40px;
+    font-weight: 500;
+  }
+}
