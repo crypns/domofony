@@ -5,6 +5,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "products".
@@ -13,8 +14,9 @@ use Yii;
  * @property string $name
  * @property integer $category_id
  * @property string $image
+ * @property string $created_at
+ * @property string $updated_at
  *
- * @property \app\models\CartProduct[] $cartProducts
  * @property \app\models\Cart[] $carts
  * @property \app\models\ComplexProduct[] $complexProducts
  * @property \app\models\Category $category
@@ -29,6 +31,21 @@ abstract class Product extends \app\custom\ActiveRecord
     public static function tableName()
     {
         return 'products';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function ($event) {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
     }
 
     /**
@@ -55,6 +72,8 @@ abstract class Product extends \app\custom\ActiveRecord
             'name' => Yii::t('models', 'Name'),
             'category_id' => Yii::t('models', 'Category ID'),
             'image' => Yii::t('models', 'Image'),
+            'created_at' => Yii::t('models', 'Created At'),
+            'updated_at' => Yii::t('models', 'Updated At'),
         ];
     }
 
@@ -67,15 +86,9 @@ abstract class Product extends \app\custom\ActiveRecord
             'name' => Yii::t('models', 'Название продукта'),
             'category_id' => Yii::t('models', 'Название категории'),
             'image' => Yii::t('models', 'Изображение'),
+            'created_at' => Yii::t('models', 'Дата создания записи'),
+            'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCartProducts()
-    {
-        return $this->hasMany(\app\models\CartProduct::className(), ['product_id' => 'id']);
     }
 
     /**

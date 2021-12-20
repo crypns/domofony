@@ -5,6 +5,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "home_sliders".
@@ -15,6 +16,8 @@ use Yii;
  * @property string $image
  * @property string $product_link
  * @property integer $complex_id
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property \app\models\ApartmentComplex $complex
  * @property string $aliasModel
@@ -28,6 +31,21 @@ abstract class HomeSlider extends \app\custom\ActiveRecord
     public static function tableName()
     {
         return 'home_sliders';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function ($event) {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
     }
 
     /**
@@ -56,6 +74,8 @@ abstract class HomeSlider extends \app\custom\ActiveRecord
             'image' => Yii::t('models', 'Image'),
             'product_link' => Yii::t('models', 'Product Link'),
             'complex_id' => Yii::t('models', 'Complex ID'),
+            'created_at' => Yii::t('models', 'Created At'),
+            'updated_at' => Yii::t('models', 'Updated At'),
         ];
     }
 
@@ -70,6 +90,8 @@ abstract class HomeSlider extends \app\custom\ActiveRecord
             'image' => Yii::t('models', 'Изображение'),
             'product_link' => Yii::t('models', 'Ссылка на продукт'),
             'complex_id' => Yii::t('models', 'Название ЖК'),
+            'created_at' => Yii::t('models', 'Дата создания записи'),
+            'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
     }
 

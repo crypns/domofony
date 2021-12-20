@@ -5,6 +5,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "carts".
@@ -19,6 +20,8 @@ use Yii;
  * @property integer $general_cost
  * @property integer $general_count
  * @property string $status_order
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property \app\models\CartProduct[] $cartProducts
  * @property \app\models\Product $product
@@ -33,6 +36,21 @@ abstract class Cart extends \app\custom\ActiveRecord
     public static function tableName()
     {
         return 'carts';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function ($event) {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
     }
 
     /**
@@ -65,6 +83,8 @@ abstract class Cart extends \app\custom\ActiveRecord
             'general_cost' => Yii::t('models', 'General Cost'),
             'general_count' => Yii::t('models', 'General Count'),
             'status_order' => Yii::t('models', 'Status Order'),
+            'created_at' => Yii::t('models', 'Created At'),
+            'updated_at' => Yii::t('models', 'Updated At'),
         ];
     }
 
@@ -83,6 +103,8 @@ abstract class Cart extends \app\custom\ActiveRecord
             'general_cost' => Yii::t('models', 'Общая стоимость товара'),
             'general_count' => Yii::t('models', 'Общее количество товара'),
             'status_order' => Yii::t('models', 'Статус заказа'),
+            'created_at' => Yii::t('models', 'Дата создания записи'),
+            'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
     }
 

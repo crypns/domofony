@@ -2,6 +2,9 @@
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Html;
+/* @var $youtube array */
+/* @var $youtubeSlides \app\models\YoutubeSlider */
+
 ?>
 
 
@@ -9,26 +12,13 @@ use yii\bootstrap4\Html;
     <div class="block">
         <h4>Відеоогляди</h4>
         <div class="slider">
+
+            <?php foreach ($youtube as $youtubeSlides): ?>
             <div class="item">
-                <a href="https://www.youtube.com/user/domofonycomua" target="_blank">
-                    <img src="<?= Yii::getAlias('@web/img/slide1.jpg') ?>" alt="">
-                </a>
+                    <?=$youtubeSlides->youtube_link?>
             </div>
-            <div class="item">
-                <a href="https://www.youtube.com/user/domofonycomua" target="_blank">
-                    <img src="<?= Yii::getAlias('@web/img/slide2.jpg') ?>" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.youtube.com/user/domofonycomua" target="_blank">
-                    <img src="<?= Yii::getAlias('@web/img/slide3.jpg') ?>" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.youtube.com/user/domofonycomua" target="_blank">
-                    <img src="<?= Yii::getAlias('@web/img/slide1.jpg') ?>" alt="">
-                </a>
-            </div>
+            <?php endforeach;?>
+
         </div>
         <div class="arrows"></div>
         <a target="_blank" href="https://www.youtube.com/user/domofonycomua" class="our_channel">

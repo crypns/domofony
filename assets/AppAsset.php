@@ -18,10 +18,12 @@ class AppAsset extends AssetBundle
         'css/house.css',
         'css/order.css',
         'css/site.css',
-        'css/styles.css',
+          'css/styles.css',
         'fonts/stylesheet.css',
     ];
     public $js = [
+        'js/app.js',
+
         'js/jquery-3.6.0.min.js',
         'js/slick.min.js',
         'js/scripts.js',

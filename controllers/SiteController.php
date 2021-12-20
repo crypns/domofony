@@ -2,6 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\ApartmentComplex;
+use app\models\ComplexProduct;
+use app\models\HomeSlider;
+use app\models\PopularProduct;
+use app\models\YoutubeSlider;
+use app\widgets\Header;
+use phpDocumentor\Reflection\Types\Object_;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -71,7 +78,30 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $sliders = HomeSlider::find()
+            ->where([
+                'complex_id' => null,
+            ])
+            ->orderBy('updated_at DESC')
+            ->limit(10)
+            ->all();
+
+        $popular_product = PopularProduct::find()
+            ->orderBy('updated_at DESC')
+            ->limit(20)
+            ->all();
+
+        $youtubeSlides = YoutubeSlider::find()
+            ->orderBy('updated_at DESC')
+            ->limit(10)
+            ->all();
+
+        return $this->render('index', [
+            'sliders' => $sliders,
+            'popular_product' => $popular_product,
+            'youtubeSlides' => $youtubeSlides,
+        ]);
+
     }
 
     /**
@@ -249,17 +279,74 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
-    public function actionHouse()
+    public function actionHouse($id)
     {
-        return $this->render('house');
+        $model = ApartmentComplex::findModel($id);
+        $youtubeSlides = YoutubeSlider::find()
+            ->orderBy('updated_at DESC')
+            ->limit(10)
+            ->all();
+
+        $sliders = $model
+            ->getHomeSliders()
+            ->orderBy('updated_at DESC')
+            ->limit(50)
+            ->all();
+//        $sliders = HomeSlider::find()
+//            ->where([
+//                'complex_id' => $id,
+//            ])
+//            ->orderBy('updated_at DESC')
+//            ->limit(10)
+//            ->all();
+
+        $complexProducts = $model
+            ->getComplexProducts()
+            ->with('product')
+            ->orderBy('updated_at DESC')
+            ->limit(50)
+            ->all();
+
+
+        return $this->render('house', [
+            'youtubeSlides' => $youtubeSlides,
+            'model' => $model,
+            'sliders' => $sliders,
+            'complexProducts' => $complexProducts,
+        ]);
+
+
+
     }
 
-    public function actionOrder()
+
+
+    public function actionSearchApartments($query)
     {
-        return $this->render('order');
+        $expression = new \yii\db\Expression("'%$query%'");
+        $apartments = ApartmentComplex::find()
+            ->where(['ILIKE', 'name', $expression])
+            ->orWhere(['ILIKE', 'address', $expression])
+            ->orWhere(['ILIKE', 'description', $expression])
+            ->all();
+
+        $return = \yii\helpers\ArrayHelper::map($apartments, function ($element) {
+            return \yii\helpers\Url::to(['/site/house', 'id' => $element['id']]);
+        }, 'name');
+
+        return json_encode($return);
     }
+
+
     public function actionSuccess()
     {
         return $this->render('success');
     }
+    public function actionMakePurchases()
+    {
+
+    }
+
 }
+
+

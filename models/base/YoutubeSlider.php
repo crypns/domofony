@@ -5,6 +5,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "youtube_sliders".
@@ -12,6 +13,8 @@ use Yii;
  * @property integer $id
  * @property string $name
  * @property string $youtube_link
+ * @property string $created_at
+ * @property string $updated_at
  * @property string $aliasModel
  */
 
@@ -23,6 +26,21 @@ abstract class YoutubeSlider extends \app\custom\ActiveRecord
     public static function tableName()
     {
         return 'youtube_sliders';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function ($event) {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
     }
 
     /**
@@ -45,6 +63,8 @@ abstract class YoutubeSlider extends \app\custom\ActiveRecord
             'id' => Yii::t('models', 'ID'),
             'name' => Yii::t('models', 'Name'),
             'youtube_link' => Yii::t('models', 'Youtube Link'),
+            'created_at' => Yii::t('models', 'Created At'),
+            'updated_at' => Yii::t('models', 'Updated At'),
         ];
     }
 
@@ -56,6 +76,8 @@ abstract class YoutubeSlider extends \app\custom\ActiveRecord
         return array_merge(parent::attributeHints(), [
             'name' => Yii::t('models', 'Название видео'),
             'youtube_link' => Yii::t('models', 'Ссылка на видео ютуб'),
+            'created_at' => Yii::t('models', 'Дата создания записи'),
+            'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
     }
 

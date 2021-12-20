@@ -99,7 +99,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 			    'attribute' => 'complex_id',
 			    'value' => function ($model) {
 			        if ($rel = $model->complex) {
-			            return Html::a($rel->label, ['apartment-complex/view', 'id' => $rel->id,], ['data-pjax' => 0]);
+			            return Html::a($rel->name, ['apartment-complex/view', 'id' => $rel->id,], ['data-pjax' => 0]);
 			        } else {
 			            return '';
 			        }
@@ -112,7 +112,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 			    'attribute' => 'product_id',
 			    'value' => function ($model) {
 			        if ($rel = $model->product) {
-			            return Html::a($rel->label, ['product/view', 'id' => $rel->id,], ['data-pjax' => 0]);
+			            return Html::a($rel->name, ['product/view', 'id' => $rel->id,], ['data-pjax' => 0]);
 			        } else {
 			            return '';
 			        }

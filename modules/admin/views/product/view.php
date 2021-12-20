@@ -64,9 +64,9 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
 [
     'format' => 'html',
     'attribute' => 'category_id',
-    'value' => ($model->category ? 
+    'value' => ($model->category ?
         Html::a('<i class="glyphicon glyphicon-list"></i>', ['category/index']).' '.
-        Html::a('<i class="glyphicon glyphicon-circle-arrow-right"></i> '.$model->category->label, ['category/view', 'id' => $model->category->id,]).' '.
+        Html::a('<i class="glyphicon glyphicon-circle-arrow-right"></i> '.$model->category->name, ['category/view', 'id' => $model->category->id,]).' '.
         Html::a('<i class="glyphicon glyphicon-paperclip"></i>', ['create', 'Product'=>['category_id' => $model->category_id]])
         : 
         '<span class="label label-warning">?</span>'),

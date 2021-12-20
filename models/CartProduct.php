@@ -30,4 +30,12 @@ class CartProduct extends BaseCartProduct
             # custom validation rules
         ]);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComplexProduct()
+    {
+        return $this->hasOne(\app\models\ComplexProduct::className(), ['id' => 'product_id']);
+    }
 }

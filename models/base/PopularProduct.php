@@ -5,6 +5,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "popular_products".
@@ -15,6 +16,8 @@ use Yii;
  * @property string $description
  * @property string $image
  * @property string $product_link
+ * @property string $created_at
+ * @property string $updated_at
  * @property string $aliasModel
  */
 
@@ -26,6 +29,21 @@ abstract class PopularProduct extends \app\custom\ActiveRecord
     public static function tableName()
     {
         return 'popular_products';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function ($event) {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
     }
 
     /**
@@ -51,6 +69,8 @@ abstract class PopularProduct extends \app\custom\ActiveRecord
             'description' => Yii::t('models', 'Description'),
             'image' => Yii::t('models', 'Image'),
             'product_link' => Yii::t('models', 'Product Link'),
+            'created_at' => Yii::t('models', 'Created At'),
+            'updated_at' => Yii::t('models', 'Updated At'),
         ];
     }
 
@@ -65,6 +85,8 @@ abstract class PopularProduct extends \app\custom\ActiveRecord
             'description' => Yii::t('models', 'Описание товара'),
             'image' => Yii::t('models', 'Изображение товара'),
             'product_link' => Yii::t('models', 'Ссылка на продукт'),
+            'created_at' => Yii::t('models', 'Дата создания записи'),
+            'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
     }
 

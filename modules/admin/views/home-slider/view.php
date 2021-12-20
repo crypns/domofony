@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
     'attribute' => 'complex_id',
     'value' => ($model->complex ? 
         Html::a('<i class="glyphicon glyphicon-list"></i>', ['apartment-complex/index']).' '.
-        Html::a('<i class="glyphicon glyphicon-circle-arrow-right"></i> '.$model->complex->label, ['apartment-complex/view', 'id' => $model->complex->id,]).' '.
+        Html::a('<i class="glyphicon glyphicon-circle-arrow-right"></i> '.$model->complex->name, ['apartment-complex/view', 'id' => $model->complex->id,]).' '.
         Html::a('<i class="glyphicon glyphicon-paperclip"></i>', ['create', 'HomeSlider'=>['complex_id' => $model->complex_id]])
         : 
         '<span class="label label-warning">?</span>'),

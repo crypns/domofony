@@ -100,7 +100,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 			    'attribute' => 'category_id',
 			    'value' => function ($model) {
 			        if ($rel = $model->category) {
-			            return Html::a($rel->label, ['category/view', 'id' => $rel->id,], ['data-pjax' => 0]);
+			            return Html::a($rel->name, ['category/view', 'id' => $rel->id,], ['data-pjax' => 0]);
 			        } else {
 			            return '';
 			        }

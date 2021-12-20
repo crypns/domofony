@@ -1,10 +1,11 @@
 <?php
 
-namespace app\modules\admin\controllers\api;
+namespace app\controllers\api;
 
 /**
 * This is the class for REST controller "CartController".
 */
+use Yii;
 use yii\filters\AccessControl;
 
 use app\models\Cart;
@@ -48,6 +49,7 @@ class CartController extends \app\custom\BaseApiController
     protected function getAuthExceptActions()
     {
         return array_merge(parent::getAuthExceptActions(), [
+            'add-to-cart',
         ]);
     }
 
@@ -63,6 +65,19 @@ class CartController extends \app\custom\BaseApiController
         ]);
     }
 
+    public function actionAddToCart()
+    {
+        $data = Yii::$app->request->post();
+        $session = Yii::$app->session;
+
+        $orders = $session->get('orders');
+        $orders[$data['product_id']] =  $data['count'];
+
+        $session->set('orders', $orders);
+
+
+
+    }
 
     /**
      * Return list of models
@@ -80,6 +95,7 @@ class CartController extends \app\custom\BaseApiController
 
         return $models;
     }
+
 
     /**
      * Creates new $this->modelClass
@@ -138,5 +154,7 @@ class CartController extends \app\custom\BaseApiController
 
         throw new \yii\web\NotFoundHttpException();
     }
+
+
 
 }

@@ -5,6 +5,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "cart_products".
@@ -13,9 +14,11 @@ use Yii;
  * @property integer $cart_id
  * @property integer $product_id
  * @property integer $count
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property \app\models\Cart $cart
- * @property \app\models\Product $product
+ * @property \app\models\ComplexProduct $product
  * @property string $aliasModel
  */
 
@@ -32,6 +35,21 @@ abstract class CartProduct extends \app\custom\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function ($event) {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
@@ -39,7 +57,7 @@ abstract class CartProduct extends \app\custom\ActiveRecord
             [['cart_id', 'product_id', 'count'], 'default', 'value' => null],
             [['cart_id', 'product_id', 'count'], 'integer'],
             [['cart_id'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\Cart::className(), 'targetAttribute' => ['cart_id' => 'id']],
-            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\Product::className(), 'targetAttribute' => ['product_id' => 'id']]
+            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\ComplexProduct::className(), 'targetAttribute' => ['product_id' => 'id']]
         ];
     }
 
@@ -53,6 +71,8 @@ abstract class CartProduct extends \app\custom\ActiveRecord
             'cart_id' => Yii::t('models', 'Cart ID'),
             'product_id' => Yii::t('models', 'Product ID'),
             'count' => Yii::t('models', 'Count'),
+            'created_at' => Yii::t('models', 'Created At'),
+            'updated_at' => Yii::t('models', 'Updated At'),
         ];
     }
 
@@ -64,6 +84,8 @@ abstract class CartProduct extends \app\custom\ActiveRecord
         return array_merge(parent::attributeHints(), [
             'product_id' => Yii::t('models', 'Название товара'),
             'count' => Yii::t('models', 'Количество товара'),
+            'created_at' => Yii::t('models', 'Дата создания записи'),
+            'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
     }
 
@@ -80,7 +102,7 @@ abstract class CartProduct extends \app\custom\ActiveRecord
      */
     public function getProduct()
     {
-        return $this->hasOne(\app\models\Product::className(), ['id' => 'product_id']);
+        return $this->hasOne(\app\models\ComplexProduct::className(), ['id' => 'product_id']);
     }
 
 

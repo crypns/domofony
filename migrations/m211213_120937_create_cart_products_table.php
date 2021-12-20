@@ -12,12 +12,14 @@ class m211213_120937_create_cart_products_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('{{%cart_products}}', [
+        $timestampColumns = require __DIR__ . DIRECTORY_SEPARATOR . '_migration_timestamp_columns.php';
+
+        $this->createTable('{{%cart_products}}', array_merge([
             'id' => $this->primaryKey(),
             'cart_id' => $this->integer()->notNull(),
             'product_id' => $this->integer()->notNull()->comment('Название товара'),
             'count' => $this->integer()->notNull()->comment('Количество товара'),
-        ]);
+        ], $timestampColumns));
         $this->addForeignKey(
             'FK-cart_products_cart_id-carts_id',
             'cart_products',
@@ -26,10 +28,10 @@ class m211213_120937_create_cart_products_table extends Migration
             'id'
         );
         $this->addForeignKey(
-            'FK-cart_products_product_id-products_id',
+            'FK-cart_products_product_id-complex_products_id',
             'cart_products',
             'product_id',
-            'products',
+            'complex_products',
             'id'
         );
     }
@@ -44,7 +46,7 @@ class m211213_120937_create_cart_products_table extends Migration
             'cart_products'
         );
         $this->dropForeignKey(
-            'FK-cart_products_product_id-products_id',
+            'FK-cart_products_product_id-complex_products_id',
             'cart_products'
         );
         $this->dropTable('{{%cart_products}}');

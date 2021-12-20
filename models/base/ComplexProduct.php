@@ -5,6 +5,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "complex_products".
@@ -14,7 +15,10 @@ use Yii;
  * @property integer $product_id
  * @property integer $count
  * @property integer $cost
+ * @property string $created_at
+ * @property string $updated_at
  *
+ * @property \app\models\CartProduct[] $cartProducts
  * @property \app\models\ApartmentComplex $complex
  * @property \app\models\Product $product
  * @property string $aliasModel
@@ -28,6 +32,21 @@ abstract class ComplexProduct extends \app\custom\ActiveRecord
     public static function tableName()
     {
         return 'complex_products';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function ($event) {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
     }
 
     /**
@@ -55,6 +74,8 @@ abstract class ComplexProduct extends \app\custom\ActiveRecord
             'product_id' => Yii::t('models', 'Product ID'),
             'count' => Yii::t('models', 'Count'),
             'cost' => Yii::t('models', 'Cost'),
+            'created_at' => Yii::t('models', 'Created At'),
+            'updated_at' => Yii::t('models', 'Updated At'),
         ];
     }
 
@@ -68,7 +89,17 @@ abstract class ComplexProduct extends \app\custom\ActiveRecord
             'product_id' => Yii::t('models', 'Название товара'),
             'count' => Yii::t('models', 'Количество товара'),
             'cost' => Yii::t('models', 'Стоимость товара'),
+            'created_at' => Yii::t('models', 'Дата создания записи'),
+            'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCartProducts()
+    {
+        return $this->hasMany(\app\models\CartProduct::className(), ['product_id' => 'id']);
     }
 
     /**

@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
     'attribute' => 'complex_id',
     'value' => ($model->complex ? 
         Html::a('<i class="glyphicon glyphicon-list"></i>', ['apartment-complex/index']).' '.
-        Html::a('<i class="glyphicon glyphicon-circle-arrow-right"></i> '.$model->complex->label, ['apartment-complex/view', 'id' => $model->complex->id,]).' '.
+        Html::a('<i class="glyphicon glyphicon-circle-arrow-right"></i> '.$model->complex->name, ['apartment-complex/view', 'id' => $model->complex->id,]).' '.
         Html::a('<i class="glyphicon glyphicon-paperclip"></i>', ['create', 'ComplexProduct'=>['complex_id' => $model->complex_id]])
         : 
         '<span class="label label-warning">?</span>'),
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
     'attribute' => 'product_id',
     'value' => ($model->product ? 
         Html::a('<i class="glyphicon glyphicon-list"></i>', ['product/index']).' '.
-        Html::a('<i class="glyphicon glyphicon-circle-arrow-right"></i> '.$model->product->label, ['product/view', 'id' => $model->product->id,]).' '.
+        Html::a('<i class="glyphicon glyphicon-circle-arrow-right"></i> '.$model->product->name, ['product/view', 'id' => $model->product->id,]).' '.
         Html::a('<i class="glyphicon glyphicon-paperclip"></i>', ['create', 'ComplexProduct'=>['product_id' => $model->product_id]])
         : 
         '<span class="label label-warning">?</span>'),

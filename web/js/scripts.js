@@ -34,11 +34,23 @@ $(document).ready(function() {
   
   $('#header .search input').on('keyup', function(){
     var search = $(this).val();
-    var result = $('#header .search .results a');
+    var result = $('#header .search .results');
     if ((search != '') && (search.length > 4)){
       $close.removeClass('dn');
-      result.text(search);
-      $('#header .search .results').slideDown(300);
+
+        $.ajax({
+            url: '/site/search-apartments',         /* Куда пойдет запрос */
+            method: 'get',             /* Метод передачи (post или get) */
+            data: {query: search},     /* Параметры передаваемые в запросе. */
+            success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+                data = JSON.parse(data);
+                result.empty();
+                $.each(data, function(url, name) {
+                    result.append(' <a href="' + url + '">' + name + '</a>');
+                });
+            }
+        });
+      $('#header .search .results').slideDown(100);
      } else {
       $close.addClass('dn');
      }
@@ -154,7 +166,7 @@ $('#video .slider').slick({
 
 $('.counter .action').click(function(){
     //get the value of input field id-'qty'
-    var qty = $(this).siblings('input').val();        
+    var qty = $(this).siblings('input').val();
     
     if($(this).attr('data-operation')==='add'){
         qty++;
@@ -174,14 +186,32 @@ $('.counter .action').click(function(){
     }
 
     //put new value into input box id-'qty'
+    //$(this).siblings('input').val(qty);
     $(this).siblings('input').val(qty);
 
+  //  console.log($(this).siblings('input'));
+    console.log($(this).siblings('input').val());
 });
 
 $('#goods .item .interaction .button button').click(function() {
     $('#order_block').removeClass('dn');
-  });
+    var elements = $('input');
+    let count = $(this).closest('.interaction').find('input:first').val();
+    let product_id = $(this).attr('data-id');
 
+    $.ajax({
+        url: '/api/cart/add-to-cart',         /* Куда пойдет запрос */
+        method: 'post',             /* Метод передачи (post или get) */
+        data: {
+            count: count,
+            product_id: product_id,
+        },     /* Параметры передаваемые в запросе. */
+        success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+            data = JSON.parse(data);
+            console.log(data);
+        }
+    });
+  });
 
 
 $('#delivery label').click(function() {

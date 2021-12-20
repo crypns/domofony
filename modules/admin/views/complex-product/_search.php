@@ -27,6 +27,10 @@ use yii\widgets\ActiveForm;
 
 		<?= $form->field($model, 'cost') ?>
 
+		<?//= $form->field($model, 'created_at') ?>
+
+		<?//= $form->field($model, 'updated_at') ?>
+
         <div class="form-group">
             <?= Html::submitButton(Yii::t('cruds', 'Search'), ['class' => 'btn btn-primary']) ?>
             <?= Html::resetButton(Yii::t('cruds', 'Reset'), ['class' => 'btn btn-default']) ?>

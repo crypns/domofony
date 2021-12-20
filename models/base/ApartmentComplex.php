@@ -5,6 +5,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the base-model class for table "apartment_complexes".
@@ -13,6 +14,8 @@ use Yii;
  * @property string $name
  * @property string $address
  * @property string $description
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property \app\models\ComplexProduct[] $complexProducts
  * @property \app\models\HomeSlider[] $homeSliders
@@ -27,6 +30,21 @@ abstract class ApartmentComplex extends \app\custom\ActiveRecord
     public static function tableName()
     {
         return 'apartment_complexes';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function ($event) {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
     }
 
     /**
@@ -51,6 +69,8 @@ abstract class ApartmentComplex extends \app\custom\ActiveRecord
             'name' => Yii::t('models', 'Name'),
             'address' => Yii::t('models', 'Address'),
             'description' => Yii::t('models', 'Description'),
+            'created_at' => Yii::t('models', 'Created At'),
+            'updated_at' => Yii::t('models', 'Updated At'),
         ];
     }
 
@@ -63,6 +83,8 @@ abstract class ApartmentComplex extends \app\custom\ActiveRecord
             'name' => Yii::t('models', 'Название ЖК'),
             'address' => Yii::t('models', 'Адрес ЖК'),
             'description' => Yii::t('models', 'Описание ЖК'),
+            'created_at' => Yii::t('models', 'Дата создания записи'),
+            'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
     }
 

@@ -12,7 +12,9 @@ class m211213_120922_create_carts_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('{{%carts}}', [
+        $timestampColumns = require __DIR__ . DIRECTORY_SEPARATOR . '_migration_timestamp_columns.php';
+
+        $this->createTable('{{%carts}}', array_merge([
             'id' => $this->primaryKey(),
             'product_id' => $this->integer()->notNull()->comment('Название товара'),
             'full_name' => $this->string()->notNull()->comment('ФИО'),
@@ -23,7 +25,7 @@ class m211213_120922_create_carts_table extends Migration
             'general_cost' => $this->integer()->notNull()->comment('Общая стоимость товара'),
             'general_count' => $this->integer()->notNull()->comment('Общее количество товара'),
             'status_order' => $this->string()->notNull()->comment('Статус заказа'),
-        ]);
+        ], $timestampColumns));
         $this->addForeignKey(
             'FK-carts_product_id-products_id',
             'carts',
