@@ -39,32 +39,52 @@ class OrderController extends Controller
                 'count' => $count,
             ];
         }
-        $cartModel = new Cart([
 
-        ]);
-
+        $productCounter = 0;
+        $productSum = 0;
 
         $cartProducts = [];
-        foreach($complexProductArrays as $complexProductArray) {
+        foreach ($complexProductArrays as $complexProductArray) {
             $complexProduct = $complexProductArray['object'];
             $count = $complexProductArray['count'];
 
+            if ($complexProduct) {
+                $cartProducts[] = new CartProduct([
+                    'product_id' => $complexProduct->id,
+                    'count' => $count,
+                ]);
+                $productCounter += $count;
 
-            $cartProducts[] = new CartProduct([
-                'product_id' => $complexProduct->id,
-                'count' => $count,
-            ]);
+
+                $productSum += $complexProduct->cost * $count;
+
+
+            }
+        }
+        $cartModel = new Cart([
+            'general_cost' => $productSum,
+            'general_count' => $productCounter,
+        ]);
+//dd($productSum);
+
+        if ($cartModel->load(Yii::$app->request->post())) {
+            if ($cartModel->load(Yii::$app->request->post()) && $cartModel->save(false)) {
+                $this->redirect('order/success');
+
+            }
         }
 
 
-        dd();
-
-
-
-        return $this->render('index',[
+        return $this->render('index', [
             'products' => $complexProductArrays,
             'cartProducts' => $cartProducts,
             'cartModel' => $cartModel,
         ]);
+
     }
+    public function actionSuccess()
+    {
+        return $this->render('/site/success');
+    }
+
 }

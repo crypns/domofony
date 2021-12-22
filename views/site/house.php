@@ -8,7 +8,7 @@ use app\widgets\Slider;
 
 ?>
 <div class="order_block df dn" id="order_block">
-    <a href="order">
+    <a href="http://localhost/order/index">
       <h5>Оформити замовлення</h5>
     </a>
     <div class="cart">
@@ -84,7 +84,7 @@ use app\widgets\Slider;
                 <path d="M17.5 7.43094e-07C17.7761 7.55164e-07 18 0.223858 18 0.500001V3.5C18 3.77614 17.7761 4 17.5 4L0.5 4C0.223858 4 -1.20706e-08 3.77614 0 3.5L1.31134e-07 0.5C1.43205e-07 0.223858 0.223858 -1.20706e-08 0.5 0L17.5 7.43094e-07Z" fill=""/>
               </svg>
             </div>
-            <input type="text" value=0  max="<?= $complexProduct->count ?>">
+            <input type="text" value="0"  max="<?= $complexProduct->count ?>">
             <div class="action" data-operation="add">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.5 18C10.7761 18 11 17.7761 11 17.5L11 11H17.5C17.7761 11 18 10.7761 18 10.5V7.5C18 7.22386 17.7761 7 17.5 7L11 7L11 0.5C11 0.223858 10.7761 0 10.5 0H7.5C7.22386 0 7 0.223858 7 0.5L7 7L0.5 7C0.223858 7 0 7.22386 0 7.5V10.5C0 10.7761 0.223858 11 0.5 11H7L7 17.5C7 17.7761 7.22386 18 7.5 18H10.5Z" fill=""/>

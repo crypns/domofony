@@ -17,7 +17,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property \app\models\Cart[] $carts
  * @property \app\models\ComplexProduct[] $complexProducts
  * @property \app\models\Category $category
  * @property string $aliasModel
@@ -89,14 +88,6 @@ abstract class Product extends \app\custom\ActiveRecord
             'created_at' => Yii::t('models', 'Дата создания записи'),
             'updated_at' => Yii::t('models', 'Дата редактирования записи'),
         ]);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCarts()
-    {
-        return $this->hasMany(\app\models\Cart::className(), ['product_id' => 'id']);
     }
 
     /**

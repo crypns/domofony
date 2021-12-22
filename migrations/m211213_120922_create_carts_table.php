@@ -16,7 +16,6 @@ class m211213_120922_create_carts_table extends Migration
 
         $this->createTable('{{%carts}}', array_merge([
             'id' => $this->primaryKey(),
-            'product_id' => $this->integer()->notNull()->comment('Название товара'),
             'full_name' => $this->string()->notNull()->comment('ФИО'),
             'phone_number' => $this->string()->notNull()->comment('Номер телефона'),
             'email' => $this->string()->notNull()->comment('Электронная почта'),
@@ -26,13 +25,6 @@ class m211213_120922_create_carts_table extends Migration
             'general_count' => $this->integer()->notNull()->comment('Общее количество товара'),
             'status_order' => $this->string()->notNull()->comment('Статус заказа'),
         ], $timestampColumns));
-        $this->addForeignKey(
-            'FK-carts_product_id-products_id',
-            'carts',
-            'product_id',
-            'products',
-            'id'
-        );
     }
 
     /**
@@ -40,10 +32,6 @@ class m211213_120922_create_carts_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey(
-        'FK-carts_product_id-products_id',
-        'carts'
-    );
         $this->dropTable('{{%carts}}');
     }
 }

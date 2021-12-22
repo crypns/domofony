@@ -292,13 +292,6 @@ class SiteController extends Controller
             ->orderBy('updated_at DESC')
             ->limit(50)
             ->all();
-//        $sliders = HomeSlider::find()
-//            ->where([
-//                'complex_id' => $id,
-//            ])
-//            ->orderBy('updated_at DESC')
-//            ->limit(10)
-//            ->all();
 
         $complexProducts = $model
             ->getComplexProducts()

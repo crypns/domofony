@@ -18,7 +18,7 @@ class Cart extends CartModel
     public function rules()
     {
         return [
-            [['id', 'product_id', 'general_cost', 'general_count'], 'integer'],
+            [['id', 'general_cost', 'general_count'], 'integer'],
             [['full_name', 'phone_number', 'email', 'address', 'delivery', 'status_order'], 'safe'],
         ];
     }
@@ -57,7 +57,6 @@ class Cart extends CartModel
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'product_id' => $this->product_id,
             'general_cost' => $this->general_cost,
             'general_count' => $this->general_count,
         ]);

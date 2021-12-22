@@ -75,8 +75,6 @@ class CartController extends \app\custom\BaseApiController
 
         $session->set('orders', $orders);
 
-
-
     }
 
     /**

@@ -24,7 +24,7 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/app.js',
 
-        'js/jquery-3.6.0.min.js',
+         //'js/jquery-3.6.0.min.js',
         'js/slick.min.js',
         'js/scripts.js',
     ];
@@ -33,7 +33,7 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
-
+        'yii\web\JqueryAsset',
         'app\assets\AngularAsset',
     ];
 

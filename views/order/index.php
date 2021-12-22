@@ -1,5 +1,8 @@
 <?php
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
+
 
 /* @var $youtubeSlides array */
 /* @var $sliders array */
@@ -9,6 +12,23 @@ use yii\bootstrap\ActiveForm;
 
 ?>
   <!----- order ----->
+<?php $form = ActiveForm::begin([
+    'id' => 'Cart',
+    //'layout' => 'horizontal',
+    'enableClientValidation' => false,
+    'errorSummaryCssClass' => 'error-summary alert alert-danger',
+    'fieldConfig' => [
+      //  'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+        'template' => "{input}",
+        'horizontalCssClasses' => [
+            'label' => 'col-sm-2',
+            'offset' => 'col-sm-offset-4',
+            'wrapper' => 'col-sm-8',
+            'error' => '',
+            'hint' => '',
+        ],
+    ],
+]); ?>
 
   <section class="order" id="order">
     <div class="block">
@@ -19,23 +39,6 @@ use yii\bootstrap\ActiveForm;
         <h6>Ваше замовлення</h6>
       </div>
 
-        <?php $form = ActiveForm::begin([
-            'id' => 'Cart',
-            'layout' => 'horizontal',
-            'enableClientValidation' => true,
-            'errorSummaryCssClass' => 'error-summary alert alert-danger',
-            'fieldConfig' => [
-                'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
-                'horizontalCssClasses' => [
-                    'label' => 'col-sm-2',
-                    //'offset' => 'col-sm-offset-4',
-                    'wrapper' => 'col-sm-8',
-                    'error' => '',
-                    'hint' => '',
-                ],
-            ],
-        ]); ?>
-
         <?php foreach ($cartProducts as $cartProduct): ?>
       <div class="item">
         <div class="img">
@@ -44,9 +47,10 @@ use yii\bootstrap\ActiveForm;
         <div class="cont">
           <div class="name">
             <h6><?=$cartProduct->complexProduct->product->name?></h6>
+            <?= $form->field($cartProduct, 'product_id')->hiddenInput([
+                    'value' => $cartProduct->complexProduct->id,
+            ])?>
           </div>
-
-
           <div class="counter">
             <div class="action" data-operation="substract">
               <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +61,6 @@ use yii\bootstrap\ActiveForm;
               <?= $form->field($cartProduct, 'count', [
                       'template' => '{input}'
               ])->textInput(['maxlength' => true]) ?>
-
               <div class="action" data-operation="add">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.5 18C10.7761 18 11 17.7761 11 17.5L11 11H17.5C17.7761 11 18 10.7761 18 10.5V7.5C18 7.22386 17.7761 7 17.5 7L11 7L11 0.5C11 0.223858 10.7761 0 10.5 0H7.5C7.22386 0 7 0.223858 7 0.5L7 7L0.5 7C0.223858 7 0 7.22386 0 7.5V10.5C0 10.7761 0.223858 11 0.5 11H7L7 17.5C7 17.7761 7.22386 18 7.5 18H10.5Z" fill=""/>
@@ -65,7 +68,7 @@ use yii\bootstrap\ActiveForm;
             </div>
           </div>
           <div class="price">
-            <h6>86 200.00 ₴</h6>
+            <h6><?=$cartProduct->complexProduct->cost?></h6>
           </div>
           <div class="delete">
             <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,10 +82,11 @@ use yii\bootstrap\ActiveForm;
 
       <div class="total">
         <h5>Разом:</h5>
-        <h5 class="quantity">112</h5>
-        <h5 class="price">96 544.00 ₴</h5>
+        <h5 class="quantity"><?= $cartModel->general_count ?></h5>
+        <h5 class="price"><?= $cartModel->general_cost ?> ₴</h5>
       </div>
     </div>
+
   </section>
 
   <!----- payment ----->
@@ -95,45 +99,104 @@ use yii\bootstrap\ActiveForm;
         </div>
         <h6>Ваше замовлення</h6>
       </div>
-      <form action="">
+        <form action="">
         <div class="fields">
           <h5>Інформація про покупця</h5>
           <div class="input">
-              <?= $form->field($cartModel, 'name', [
-                  'template' => '{input}'
-              ])->textInput(['maxlength' => true]) ?>
+              <input type="text" placeholder="Ім’я">
+              <?= $form->field($cartModel, 'full_name',
+                  [
+                 'template' => '{input}'
+              ])->textInput(['maxlength' => true]
+              )->label('name')
+              ?>
           </div>
           <div class="input">
             <input type="text" placeholder="Прізвище">
+              <?= $form->field($cartModel, 'full_name',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )->label('name')
+              ?>
           </div>
           <div class="input">
             <h6>+38</h6>
             <input type="text" placeholder="(_ _ _) _ _ _ _ _ _ _">
+              <?= $form->field($cartModel, 'phone_number',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )
+              ?>
           </div>
           <div class="input">
             <input type="text" placeholder="Електронна пошта">
+              <?= $form->field($cartModel, 'email',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )
+              ?>
           </div>
           <div class="input">
             <input type="text" placeholder="Вулиця">
+              <?= $form->field($cartModel, 'street',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )
+              ?>
           </div>
           <div class="input w25">
             <input type="text" placeholder="Будинок">
+              <?= $form->field($cartModel, 'apartment',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )
+              ?>
           </div>
           <div class="input w25">
             <input type="text" placeholder="Квартира">
+              <?= $form->field($cartModel, 'house',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )
+              ?>
           </div>
           <div class="input w25">
             <input type="text" placeholder="Під’їзд">
+              <?= $form->field($cartModel, 'entrance',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )
+              ?>
           </div>
           <div class="input w25">
             <input type="text" placeholder="Поверх">
+              <?= $form->field($cartModel, 'floor',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )
+              ?>
+
           </div>
         </div>
-          <?php ActiveForm::end(); ?>
+
         <div class="delivery" id="delivery">
           <h5>Доставка</h5>
           <label class="radio">
             <input type="radio" name="delivery" id="newPost">
+              <?= $form->field($cartModel, 'delivery',
+                  [
+                      'template' => '{input}'
+                  ])->radioList(['maxlength' => true]
+              )
+              ?>
             <span>
               <div>
                   <img src="<?= Yii::getAlias('@web/img/order/newPost.svg') ?>" alt="">
@@ -142,7 +205,12 @@ use yii\bootstrap\ActiveForm;
             </span>
           </label>
           <div class="input" id="postNumber">
-            <input type="text" placeholder="Номер відділення">
+              <?= $form->field($cartModel, 'code_post',
+                  [
+                      'template' => '{input}'
+                  ])->textInput(['maxlength' => true]
+              )
+              ?>
           </div>
           <label class="radio">
             <input type="radio" name="delivery">
@@ -154,11 +222,14 @@ use yii\bootstrap\ActiveForm;
             </span>
           </label>
         </div>
-      </form>
+          <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+
+<!--        </form>-->
       <div class="online">
         <a href="#">
           <h5>Оплатити замовлення онлайн</h5>
         </a>
+          <?php ActiveForm::end(); ?>
         <div class="cards">
           <div>
               <img src="<?= Yii::getAlias('@web/img/order/liqpay.svg') ?>" alt="">

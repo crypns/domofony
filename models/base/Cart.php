@@ -11,7 +11,6 @@ use yii\behaviors\TimestampBehavior;
  * This is the base-model class for table "carts".
  *
  * @property integer $id
- * @property integer $product_id
  * @property string $full_name
  * @property string $phone_number
  * @property string $email
@@ -24,7 +23,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $updated_at
  *
  * @property \app\models\CartProduct[] $cartProducts
- * @property \app\models\Product $product
  * @property string $aliasModel
  */
 
@@ -56,14 +54,15 @@ abstract class Cart extends \app\custom\ActiveRecord
     /**
      * @inheritdoc
      */
+
+
     public function rules()
     {
         return [
-            [['product_id', 'full_name', 'phone_number', 'email', 'address', 'delivery', 'general_cost', 'general_count', 'status_order'], 'required'],
-            [['product_id', 'general_cost', 'general_count'], 'default', 'value' => null],
-            [['product_id', 'general_cost', 'general_count'], 'integer'],
-            [['full_name', 'phone_number', 'email', 'address', 'delivery', 'status_order'], 'string', 'max' => 255],
-            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\Product::className(), 'targetAttribute' => ['product_id' => 'id']]
+            [['full_name', 'phone_number', 'email', 'address', 'delivery', 'general_cost', 'general_count', 'status_order'], 'required'],
+            [['general_cost', 'general_count'], 'default', 'value' => null],
+            [['general_cost', 'general_count'], 'integer'],
+            [['full_name', 'phone_number', 'email', 'address', 'delivery', 'status_order'], 'string', 'max' => 255]
         ];
     }
 
@@ -74,7 +73,6 @@ abstract class Cart extends \app\custom\ActiveRecord
     {
         return [
             'id' => Yii::t('models', 'ID'),
-            'product_id' => Yii::t('models', 'Product ID'),
             'full_name' => Yii::t('models', 'Full Name'),
             'phone_number' => Yii::t('models', 'Phone Number'),
             'email' => Yii::t('models', 'Email'),
@@ -94,7 +92,6 @@ abstract class Cart extends \app\custom\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'product_id' => Yii::t('models', 'Название товара'),
             'full_name' => Yii::t('models', 'ФИО'),
             'phone_number' => Yii::t('models', 'Номер телефона'),
             'email' => Yii::t('models', 'Электронная почта'),
@@ -114,14 +111,6 @@ abstract class Cart extends \app\custom\ActiveRecord
     public function getCartProducts()
     {
         return $this->hasMany(\app\models\CartProduct::className(), ['cart_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProduct()
-    {
-        return $this->hasOne(\app\models\Product::className(), ['id' => 'product_id']);
     }
 
 

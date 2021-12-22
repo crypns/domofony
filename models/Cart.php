@@ -10,12 +10,12 @@ use \app\models\base\Cart as BaseCart;
  */
 class Cart extends BaseCart
 {
-
-    // Use this method to set primary name column if it has not standart name
-    public function getLabel()
-    {
-        // return $this->full_name;
-    }
+    public $street;
+    public $house;
+    public $apartment;
+    public $entrance;
+    public $floor;
+    public $code_post;
 
     public function behaviors()
     {
@@ -24,10 +24,26 @@ class Cart extends BaseCart
         ]);
     }
 
+
     public function rules()
     {
+
         return array_merge(parent::rules(), [
-            # custom validation rules
+            ['address', 'filter', 'filter' => function($value) {
+            dd(123);
+                $value = $this->house
+                    . ', ' . $this->street
+                    . ', ' . $this->apartment
+                    . ', ' . $this->entrance
+                    . ', ' . $this->floor;
+              //  dd($value);
+                dump($value);
+                dump($this);
+                die;
+                return $value;
+
+            }],
         ]);
+
     }
 }
