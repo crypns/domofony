@@ -99,7 +99,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 			    'attribute' => 'product_id',
 			    'value' => function ($model) {
 			        if ($rel = $model->product) {
-			            return Html::a($rel->label, ['product/view', 'id' => $rel->id,], ['data-pjax' => 0]);
+			            return Html::a($rel->name, ['product/view', 'id' => $rel->id,], ['data-pjax' => 0]);
 			        } else {
 			            return '';
 			        }
@@ -112,8 +112,8 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 				'address',
 				'delivery',
 				'general_cost',
-				/*'general_count',*/
-				/*'status_order',*/
+				'general_count',
+				'status_order',
             ]
         ]); ?>
     </div>

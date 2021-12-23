@@ -39,7 +39,7 @@ class OrderController extends Controller
                 'count' => $count,
             ];
         }
-
+dd($complexProductArrays);
         $productCounter = 0;
         $productSum = 0;
 
@@ -54,26 +54,20 @@ class OrderController extends Controller
                     'count' => $count,
                 ]);
                 $productCounter += $count;
-
-
                 $productSum += $complexProduct->cost * $count;
-
-
             }
         }
         $cartModel = new Cart([
             'general_cost' => $productSum,
             'general_count' => $productCounter,
         ]);
-//dd($productSum);
 
         if ($cartModel->load(Yii::$app->request->post())) {
             if ($cartModel->load(Yii::$app->request->post()) && $cartModel->save(false)) {
-                $this->redirect('order/success');
+                $this->redirect('/site/success');
 
             }
         }
-
 
         return $this->render('index', [
             'products' => $complexProductArrays,
@@ -82,6 +76,7 @@ class OrderController extends Controller
         ]);
 
     }
+
     public function actionSuccess()
     {
         return $this->render('/site/success');

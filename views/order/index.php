@@ -103,88 +103,99 @@ use yii\helpers\Html;
         <div class="fields">
           <h5>Інформація про покупця</h5>
           <div class="input">
-              <input type="text" placeholder="Ім’я">
               <?= $form->field($cartModel, 'full_name',
                   [
                  'template' => '{input}'
-              ])->textInput(['maxlength' => true]
-              )->label('name')
+              ])->textInput([
+                    'maxlength' => true,
+                    'placeholder'=>'Ім’я'
+                  ])->label('name')
               ?>
           </div>
           <div class="input">
-            <input type="text" placeholder="Прізвище">
               <?= $form->field($cartModel, 'full_name',
                   [
                       'template' => '{input}'
-                  ])->textInput(['maxlength' => true]
-              )->label('name')
+                  ])->textInput([
+                    'maxlength' => true,
+                    'placeholder'=>'Прізвище'
+                  ])->label('name')
               ?>
           </div>
           <div class="input">
             <h6>+38</h6>
-            <input type="text" placeholder="(_ _ _) _ _ _ _ _ _ _">
               <?= $form->field($cartModel, 'phone_number',
                   [
                       'template' => '{input}'
-                  ])->textInput(['maxlength' => true]
-              )
+                  ])->textInput([
+                        'maxlength' => true,
+                        'placeholder'=>'(_ _ _) _ _ _ _ _ _ _'
+                  ])
               ?>
           </div>
           <div class="input">
-            <input type="text" placeholder="Електронна пошта">
               <?= $form->field($cartModel, 'email',
                   [
                       'template' => '{input}'
-                  ])->textInput(['maxlength' => true]
-              )
+                  ])->textInput(['maxlength' => true,
+                                 'placeholder'=>'Електронна пошта'
+                  ])
               ?>
           </div>
           <div class="input">
-            <input type="text" placeholder="Вулиця">
-              <?= $form->field($cartModel, 'street',
+              <?= $form->field($cartModel, 'address',
                   [
                       'template' => '{input}'
-                  ])->textInput(['maxlength' => true]
-              )
+                  ])->textInput([
+                    'maxlength' => true,
+                    'placeholder'=>'Вулиця'
+                  ])
               ?>
           </div>
           <div class="input w25">
-            <input type="text" placeholder="Будинок">
               <?= $form->field($cartModel, 'apartment',
                   [
                       'template' => '{input}'
-                  ])->textInput(['maxlength' => true]
-              )
+                  ])->textInput([
+                    'maxlength' => true,
+                    'placeholder'=>'Будинок'
+                  ])
               ?>
           </div>
           <div class="input w25">
-            <input type="text" placeholder="Квартира">
               <?= $form->field($cartModel, 'house',
                   [
                       'template' => '{input}'
-                  ])->textInput(['maxlength' => true]
-              )
+                  ])->textInput([
+                        'maxlength' => true,
+                        'placeholder'=>'Квартира'
+                    ])
               ?>
           </div>
           <div class="input w25">
-            <input type="text" placeholder="Під’їзд">
               <?= $form->field($cartModel, 'entrance',
                   [
                       'template' => '{input}'
-                  ])->textInput(['maxlength' => true]
-              )
+                  ])->textInput([
+                      'maxlength' => true,
+                      'placeholder'=>'Під’їзд'
+                  ])
               ?>
           </div>
           <div class="input w25">
-            <input type="text" placeholder="Поверх">
               <?= $form->field($cartModel, 'floor',
                   [
                       'template' => '{input}'
                   ])->textInput(['maxlength' => true]
               )
               ?>
-
           </div>
+            <?= $form->field($cartModel, 'status_order',
+                [
+                    'template' => '{input}'
+                ])->hiddenInput(['maxlength' => true, 'value'=> 'В обработке']
+            )
+            ?>
         </div>
 
         <div class="delivery" id="delivery">
@@ -194,7 +205,7 @@ use yii\helpers\Html;
               <?= $form->field($cartModel, 'delivery',
                   [
                       'template' => '{input}'
-                  ])->radioList(['maxlength' => true]
+                  ])->radioList(['Нова Пошта (у відділення)']
               )
               ?>
             <span>

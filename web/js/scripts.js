@@ -208,7 +208,6 @@ $('#goods .item .interaction .button button').click(function() {
         },     /* Параметры передаваемые в запросе. */
         success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
             data = JSON.parse(data);
-            console.log(data);
         }
     });
   });
@@ -224,6 +223,7 @@ $('#delivery label').click(function() {
 
 $('#order .item .delete').click(function() {
     $(this).closest('.item').css('display','none');
+
   });
 
 
