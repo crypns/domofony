@@ -67,7 +67,7 @@ use app\widgets\Slider;
           </div>
         </div>
       </div>
-        <?php foreach ($complexProducts as $complexProduct): ?>
+    <?php foreach ($complexProducts as $complexProduct): ?>
       <div class="item">
         <div class="object">
           <div class="img">

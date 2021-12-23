@@ -17,7 +17,6 @@ class Cart extends BaseCart
     public $entrance;
     public $floor;
     public $code_post;
-    public $newvalue;
 
     public function behaviors()
     {
@@ -29,16 +28,17 @@ class Cart extends BaseCart
     public function rules()
     {
         return array_merge(parent::rules(), [
-            ['address', 'filter', 'filter' => function($newvalue) {
-                $newvalue = $this->house
-                    . ', ' . $this->street
-                    . ', ' . $this->apartment
-                    . ', ' . $this->entrance
-                    . ', ' . $this->floor
-                    . ', ' . $this->code_post;
-                return $newvalue;
+            [['street', 'house', 'apartment', 'entrance', 'floor'], 'required'],
+            [['address'], 'filter', 'filter' => function($value) {
+
+                $result = $this->street
+                    . ', д.  ' . $this->house
+                    . ', кв. ' . $this->apartment
+                    . ', подъезд ' . $this->entrance
+                    . ', этаж ' . $this->floor;
+                return $result;
+
             }],
-        ]
-        );
+        ]);
     }
 }

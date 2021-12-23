@@ -39,7 +39,6 @@ class OrderController extends Controller
                 'count' => $count,
             ];
         }
-dd($complexProductArrays);
         $productCounter = 0;
         $productSum = 0;
 
@@ -62,7 +61,7 @@ dd($complexProductArrays);
             'general_count' => $productCounter,
         ]);
 
-        if ($cartModel->load(Yii::$app->request->post())) {
+        if ($cartModel->load(Yii::$app->request->post()) && $cartModel->validate()) {
             if ($cartModel->load(Yii::$app->request->post()) && $cartModel->save(false)) {
                 $this->redirect('/site/success');
 
@@ -74,7 +73,6 @@ dd($complexProductArrays);
             'cartProducts' => $cartProducts,
             'cartModel' => $cartModel,
         ]);
-
     }
 
     public function actionSuccess()

@@ -14,11 +14,11 @@ use yii\helpers\Html;
   <!----- order ----->
 <?php $form = ActiveForm::begin([
     'id' => 'Cart',
-    //'layout' => 'horizontal',
+    'layout' => 'horizontal',
     'enableClientValidation' => false,
     'errorSummaryCssClass' => 'error-summary alert alert-danger',
     'fieldConfig' => [
-      //  'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+        'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
         'template' => "{input}",
         'horizontalCssClasses' => [
             'label' => 'col-sm-2',
@@ -143,7 +143,7 @@ use yii\helpers\Html;
               ?>
           </div>
           <div class="input">
-              <?= $form->field($cartModel, 'address',
+              <?= $form->field($cartModel, 'street',
                   [
                       'template' => '{input}'
                   ])->textInput([
@@ -186,8 +186,8 @@ use yii\helpers\Html;
               <?= $form->field($cartModel, 'floor',
                   [
                       'template' => '{input}'
-                  ])->textInput(['maxlength' => true]
-              )
+                  ])->textInput(['maxlength' => true,'placeholder' => 'Поверх']
+              );
               ?>
           </div>
             <?= $form->field($cartModel, 'status_order',
