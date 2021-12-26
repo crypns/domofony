@@ -12,14 +12,15 @@ use app\models\Product as ProductModel;
 */
 class Product extends ProductModel
 {
+    public $category_name;
     /**
     * @inheritdoc
     */
     public function rules()
     {
         return [
-            [['id', 'category_id'], 'integer'],
-            [['name', 'image'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'image', 'category_name'], 'safe'],
         ];
     }
 
@@ -45,7 +46,15 @@ class Product extends ProductModel
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-        ]);
+            'sort' => ['attributes' => [
+                'name',
+                'category_name' => [
+                    'asc' => ['categories.name' => SORT_ASC],
+                    'desc' => ['categories.name' => SORT_DESC],
+                    'default' => SORT_DESC
+                ],
+            ],
+            ]]);
 
         $this->load($params);
 
@@ -60,8 +69,12 @@ class Product extends ProductModel
             'category_id' => $this->category_id,
         ]);
 
+        $query->joinWith('category');
+
         $query->andFilterWhere(['ilike', 'name', $this->name])
-            ->andFilterWhere(['ilike', 'image', $this->image]);
+            ->andFilterWhere(['ilike', 'image', $this->image])
+            ->andFilterWhere(['ilike', 'categories.name', $this->category_name]);
+
 
         return $dataProvider;
     }

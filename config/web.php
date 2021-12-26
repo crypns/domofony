@@ -21,6 +21,9 @@ $config = array_merge($language, [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['user', 'moderator', 'admin'],
         ],
+        'formatter' => [
+            'currencyCode' => 'UAH',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '6MN-T0hVLs5fEOJuJv37RI6f4YCQJKuc',

@@ -12,7 +12,7 @@ use yii\widgets\DetailView;
 $copyParams = $model->attributes;
 
 $this->title = Yii::t('models', 'Apartment Complex');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('models', 'Apartment Complexes'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('models', 'Apartment Complex'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => (string)$model->label, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
 ?>

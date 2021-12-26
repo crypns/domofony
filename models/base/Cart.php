@@ -59,7 +59,7 @@ abstract class Cart extends \app\custom\ActiveRecord
     public function rules()
     {
         return [
-            [['full_name', 'phone_number', 'email', 'general_cost', 'general_count', 'status_order'], 'required'],
+            [['phone_number', 'email', 'general_cost', 'general_count', 'status_order'], 'required'],
             [['general_cost', 'general_count'], 'default', 'value' => null],
             [['general_cost', 'general_count'], 'integer'],
             [['full_name', 'phone_number', 'email', 'address', 'delivery', 'status_order'], 'string', 'max' => 255]

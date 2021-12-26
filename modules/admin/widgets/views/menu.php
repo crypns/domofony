@@ -19,7 +19,6 @@ use yii\helpers\StringHelper;
 
             <?php else: ?>
                 <div class="group">
-                    <span class="devider"><?= $groupName ?></span>
                     <?php foreach ($records as $row): ?>
 
                         <?php if ($row['can']): ?>

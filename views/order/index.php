@@ -42,7 +42,7 @@ use yii\helpers\Html;
         <?php foreach ($cartProducts as $cartProduct): ?>
       <div class="item">
         <div class="img">
-            <img src="<?= Yii::getAlias('@web/img/house/camera.jpg') ?>" alt="">
+            <img src="<?= Yii::getAlias('@web/loaded/camera.jpg') ?>" alt="">
         </div>
         <div class="cont">
           <div class="name">
@@ -102,8 +102,8 @@ use yii\helpers\Html;
         <form action="">
         <div class="fields">
           <h5>Інформація про покупця</h5>
-          <div class="input">
-              <?= $form->field($cartModel, 'full_name',
+         <div class="input">
+              <?= $form->field($cartModel, 'first_name',
                   [
                  'template' => '{input}'
               ])->textInput([
@@ -112,26 +112,26 @@ use yii\helpers\Html;
                   ])->label('name')
               ?>
           </div>
-          <div class="input">
-              <?= $form->field($cartModel, 'full_name',
+
+              <?= $form->field($cartModel, 'last_name',
                   [
                       'template' => '{input}'
                   ])->textInput([
-                    'maxlength' => true,
+                  'maxlength' => true,
                     'placeholder'=>'Прізвище'
                   ])->label('name')
               ?>
-          </div>
+
           <div class="input">
-            <h6>+38</h6>
-              <?= $form->field($cartModel, 'phone_number',
-                  [
-                      'template' => '{input}'
-                  ])->textInput([
-                        'maxlength' => true,
-                        'placeholder'=>'(_ _ _) _ _ _ _ _ _ _'
-                  ])
-              ?>
+           <h6>+38</h6>
+              <?= $form->field($cartModel, 'phone_number')->widget(\borales\extensions\phoneInput\PhoneInput::className(), [
+                  'jsOptions' => [
+                      'allowExtensions' => true,
+                      'onlyCountries' => ['ua'],
+                      'nationalMode' => true,
+                      'placeholder'=>'(_ _ _) _ _ _ _ _ _ _'
+                  ]
+              ]); ?>
           </div>
           <div class="input">
               <?= $form->field($cartModel, 'email',
@@ -193,7 +193,7 @@ use yii\helpers\Html;
             <?= $form->field($cartModel, 'status_order',
                 [
                     'template' => '{input}'
-                ])->hiddenInput(['maxlength' => true, 'value'=> 'В обработке']
+                ])->hiddenInput(['value'=> 'New']
             )
             ?>
         </div>
@@ -201,18 +201,44 @@ use yii\helpers\Html;
         <div class="delivery" id="delivery">
           <h5>Доставка</h5>
           <label class="radio">
-            <input type="radio" name="delivery" id="newPost">
+<!--            <input type="radio" name="delivery" id="newPost">-->
               <?= $form->field($cartModel, 'delivery',
                   [
                       'template' => '{input}'
-                  ])->radioList(['Нова Пошта (у відділення)']
-              )
+                  ])->radioList(
+                            [
+                                1 => 'Нова Пошта (у відділення)',
+                                0 => 'Кур’єрам',
+                            ],
+                            [
+                                    'item' => function ($index, $label, $name, $checked, $value) {
+                                    switch ($value) {
+                                case 1:
+                                    $options = [
+                                        'label' => 'Нова Пошта (у відділення)',
+                                        'id' => 'newPost',
+                                        'name' => 'delivery',
+                                        'value' => 'Нова Пошта',
+                                    ];
+                                    break;
+                                case 0:
+                                    $options = [
+                                        'label' => 'Кур’єр по Києву (в поштову скриньку або консьєржу)',
+                                        'name' => 'delivery',
+                                        'value' => 'Кур’єрам',
+                                    ];
+                            }  return \yii\bootstrap\Html::radio($name, $checked, array_merge($options, [
+                                            'value' => $value,
+                                            'label' => \yii\bootstrap\Html::encode($label),
+                                        ]));
+                                    }]
+              )->label(false);
               ?>
             <span>
               <div>
                   <img src="<?= Yii::getAlias('@web/img/order/newPost.svg') ?>" alt="">
               </div>
-              <p class="p1">Нова Пошта (у відділення)</p>
+<!--              <p class="p1">Нова Пошта (у відділення)</p>-->
             </span>
           </label>
           <div class="input" id="postNumber">
@@ -224,12 +250,22 @@ use yii\helpers\Html;
               ?>
           </div>
           <label class="radio">
-            <input type="radio" name="delivery">
+<!--            <input type="radio" name="delivery">-->
+<!--              --><?//= $form->field($cartModel, 'delivery',
+//                  [
+//                      'template' => '{input}'
+//                  ])->radio([
+//                      'label' => 'Кур’єр по Києву (в поштову скриньку або консьєржу)',
+//                      'name' => 'delivery',
+//                      'value' => 'Кур’єрам',
+//                  ]
+//              )
+//              ?>
             <span>
               <div>
                   <img src="<?= Yii::getAlias('@web/img/order/newPost.svg') ?>" alt="">
               </div>
-              <p class="p1">Кур’єр по Києву (в поштову скриньку або консьєржу)</p>
+<!--              <p class="p1">Кур’єр по Києву (в поштову скриньку або консьєржу)</p>-->
             </span>
           </label>
         </div>

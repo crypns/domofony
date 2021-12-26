@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\DetailView;
+use yii\helpers\StringHelper;
 
 /**
 * @var yii\web\View $this
@@ -63,7 +64,11 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
         'product_code',
         'description',
         'image',
-        'product_link',
+        [
+            'attribute' => 'product_link',
+            'format' => 'raw',
+            'value' => Html::a(StringHelper::truncate($model->product_link,100), $model->product_link, ['target' => '_blank']),
+        ],
     ],
     ]); ?>
 

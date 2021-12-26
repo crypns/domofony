@@ -57,11 +57,15 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
     <hr/>
 
     <?= DetailView::widget([
-    'model' => $model,
-    'attributes' => [
-            'youtube_link',
-        'name',
-    ],
+        'model' => $model,
+        'attributes' => [
+            'name',
+            [
+                'attribute' => 'youtube_link',
+                'format' => 'raw',
+                'value' => $model->youtube_link,
+            ],
+        ],
     ]); ?>
 
     <hr/>

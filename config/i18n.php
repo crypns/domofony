@@ -10,22 +10,22 @@ $fileConfig = [
     ],
 ];
 
-$dbConfig = [
-    // 'class' => 'yii\i18n\DbMessageSource',
-    'class' => 'app\custom\DbMessageSource',
-    'messageTable' => '{{%message}}',
-    'sourceMessageTable' => '{{%source_message}}',
-
-    'sourceLanguage' => 'en-US',
-
-    'enableCaching' => true,
-    'cachingDuration' => 10,
-    'forceTranslation'=> true,
-];
+//$dbConfig = [
+//    // 'class' => 'yii\i18n\DbMessageSource',
+//    'class' => 'app\custom\DbMessageSource',
+//    'messageTable' => '{{%message}}',
+//    'sourceMessageTable' => '{{%source_message}}',
+//
+//    'sourceLanguage' => 'en-US',
+//
+//    'enableCaching' => true,
+//    'cachingDuration' => 10,
+//    'forceTranslation'=> true,
+//];
 
 return [
     'translations' => [
-        'app' => $dbConfig,
+//        'app' => $dbConfig,
         'models' => $fileConfig,
         'cruds' => $fileConfig,
     ],

@@ -16,7 +16,6 @@
                     $msgType = "alert";
                     break;
             endswitch;?>
-
             <?php foreach ($msgArray as $key => $oneMessage): ?>
                 <div class="<?= $msgType ?>" style="display: none;">
                     <div class="alert-message"><?= $oneMessage ?></div>

@@ -33,47 +33,8 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'Edit');
     </div>
     <br>
 
-
-    <div class="apartment-complex-form">
-        <?php $form = ActiveForm::begin([
-            'id' => 'ApartmentComplex',
-            'layout' => 'horizontal',
-            'enableClientValidation' => true,
-            'errorSummaryCssClass' => 'error-summary alert alert-danger',
-            'fieldConfig' => [
-                'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
-                'horizontalCssClasses' => [
-                    'label' => 'col-sm-2',
-                    //'offset' => 'col-sm-offset-4',
-                    'wrapper' => 'col-sm-8',
-                    'error' => '',
-                    'hint' => '',
-                ],
-            ],
-        ]); ?>
-
-                
-			<!-- attribute `name` -->
-			<?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-			<!-- end attribute -->
-			<!-- attribute `address` -->
-			<?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-			<!-- end attribute -->
-			<!-- attribute `description` -->
-			<?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
-			<!-- end attribute -->
-            
-            <?= Html::submitButton(
-                Yii::t('cruds', 'Save'),
-                [
-                    'id' => 'save-' . $model->formName(),
-                    'class' => 'btn btn-success'
-                ]
-            ); ?>
-
-        <?php ActiveForm::end(); ?>
-    </div>
-
-
+    <?= $this->render('_form', [
+        'model'=> $model,
+    ]) ?>
 
 </div>

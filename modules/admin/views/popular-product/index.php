@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
+use yii\helpers\StringHelper;
 
 /**
 * @var yii\web\View $this
@@ -97,7 +98,14 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 				'product_code',
 				'description',
 				'image',
-				'product_link',
+                [
+                    'attribute' => 'product_link',
+                    'format' => 'raw',
+                    'value' => function($model, $key, $index, $column) {
+                        $attributeName = $column->attribute;
+                        return Html::a(StringHelper::truncate($model->$attributeName,40), $model->$attributeName, ['target' => '_blank']);
+                    }
+                ],
             ]
         ]); ?>
     </div>

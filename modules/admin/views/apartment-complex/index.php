@@ -10,7 +10,7 @@ use yii\grid\GridView;
 * @var app\models\search\ApartmentComplex $searchModel
 */
 
-$this->title = Yii::t('models', 'Apartment Complexes');
+$this->title = Yii::t('models', 'Apartment Complex');
 $this->params['breadcrumbs'][] = $this->title;
 
 /**

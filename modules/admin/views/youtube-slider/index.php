@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
+use yii\helpers\StringHelper;
 
 /**
 * @var yii\web\View $this
@@ -93,8 +94,27 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                     },
                     'contentOptions' => ['nowrap' => 'nowrap']
                 ],
-				'youtube_link',
 				'name',
+                [
+                        'attribute' => 'youtube_link',
+                        'format' => 'raw',
+                        'value' => function($model, $key, $index, $column) {
+                            $attributeName = $column->attribute;
+                            $matches = [];
+                            if (preg_match('/src="([^"]+)"/ui', $model->$attributeName, $matches) === 1) {
+                                $url = $matches[1];
+                                return Html::a(
+                                    StringHelper::truncate($url, 50),
+                                    $url,
+                                    [
+                                        'target' => '_blank',
+                                    ]
+                                );
+                            }
+
+                            return htmlentities(StringHelper::truncate($model->$attributeName, 50));
+                        }
+                ],
             ]
         ]); ?>
     </div>

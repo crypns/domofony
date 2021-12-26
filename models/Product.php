@@ -10,6 +10,15 @@ use \app\models\base\Product as BaseProduct;
  */
 class Product extends BaseProduct
 {
+    public function beforeDelete()
+    {
+        $flag = true;
+        foreach ($this->complexProducts as $complexProductModel) {
+            $flag &= $complexProductModel->delete();
+        }
+
+        return $flag && parent::beforeDelete();
+    }
 
     // Use this method to set primary name column if it has not standart name
     public function getLabel()

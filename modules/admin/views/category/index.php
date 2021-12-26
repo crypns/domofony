@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
+use app\widgets\Alert;
 
 /**
 * @var yii\web\View $this
@@ -47,7 +48,15 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
         <small>
             <?= Yii::t('cruds', 'List') ?>        </small>
     </h1>
-
+<!--    --><?php //if (Yii::$app->session->hasFlash('warning')): ?>
+<!--        <div class="alert alert-warning alert-dismissible" role="alert">-->
+<!--            <button type="button" class="close"-->
+<!--                    data-dismiss="alert" aria-label="Закрыть">-->
+<!--                <span aria-hidden="true">&times;</span>-->
+<!--            </button>-->
+<!--            <p>--><?//= Yii::$app->session->getFlash('warning'); ?><!--</p>-->
+<!--        </div>-->
+<!--    --><?php //endif; ?>
     <div class="clearfix crud-navigation">
 		<?php if(\Yii::$app->user->can('app_category_create', ['route' => true])): ?>
             <div class="pull-left">

@@ -9,5 +9,7 @@ return [
     'user.passwordResetTokenExpire' => 3600 * 24 * 30,
     'user.passwordMinLength' => 3,
     'supportEmail' => 'support@mail.ru',
+    'bsDependencyEnabled' => false,
+    'bsVersion' => '4.x',
 
 ];
