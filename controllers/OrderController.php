@@ -61,12 +61,10 @@ class OrderController extends Controller
             'general_count' => $productCounter,
         ]);
 
-        if ($cartModel->load(Yii::$app->request->post()) && $cartModel->validate()) {
-            if ($cartModel->load(Yii::$app->request->post()) && $cartModel->save(false)) {
-                $this->redirect('/site/success');
-
-            }
+        if ($cartModel->load(Yii::$app->request->post()) && $cartModel->save()) {
+            return $this->redirect('/site/success');
         }
+
 
         return $this->render('index', [
             'products' => $complexProductArrays,

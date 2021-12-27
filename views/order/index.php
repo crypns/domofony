@@ -1,6 +1,8 @@
 <?php
+
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use app\models\Cart;
 
 
 
@@ -18,8 +20,9 @@ use yii\helpers\Html;
     'enableClientValidation' => false,
     'errorSummaryCssClass' => 'error-summary alert alert-danger',
     'fieldConfig' => [
-        'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
-        'template' => "{input}",
+       // 'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+        'template' => "{beginWrapper}\n{input}\n{error}\n{endWrapper}",
+      //  'template' => "{input}",
         'horizontalCssClasses' => [
             'label' => 'col-sm-2',
             'offset' => 'col-sm-offset-4',
@@ -105,7 +108,7 @@ use yii\helpers\Html;
          <div class="input">
               <?= $form->field($cartModel, 'first_name',
                   [
-                 'template' => '{input}'
+                // 'template' => '{input}'
               ])->textInput([
                     'maxlength' => true,
                     'placeholder'=>'Ім’я'
@@ -115,7 +118,7 @@ use yii\helpers\Html;
 
               <?= $form->field($cartModel, 'last_name',
                   [
-                      'template' => '{input}'
+                //      'template' => '{input}'
                   ])->textInput([
                   'maxlength' => true,
                     'placeholder'=>'Прізвище'
@@ -136,7 +139,7 @@ use yii\helpers\Html;
           <div class="input">
               <?= $form->field($cartModel, 'email',
                   [
-                      'template' => '{input}'
+                 //     'template' => '{input}'
                   ])->textInput(['maxlength' => true,
                                  'placeholder'=>'Електронна пошта'
                   ])
@@ -145,7 +148,7 @@ use yii\helpers\Html;
           <div class="input">
               <?= $form->field($cartModel, 'street',
                   [
-                      'template' => '{input}'
+                  //    'template' => '{input}'
                   ])->textInput([
                     'maxlength' => true,
                     'placeholder'=>'Вулиця'
@@ -155,7 +158,7 @@ use yii\helpers\Html;
           <div class="input w25">
               <?= $form->field($cartModel, 'apartment',
                   [
-                      'template' => '{input}'
+                  //    'template' => '{input}'
                   ])->textInput([
                     'maxlength' => true,
                     'placeholder'=>'Будинок'
@@ -165,7 +168,7 @@ use yii\helpers\Html;
           <div class="input w25">
               <?= $form->field($cartModel, 'house',
                   [
-                      'template' => '{input}'
+                  //    'template' => '{input}'
                   ])->textInput([
                         'maxlength' => true,
                         'placeholder'=>'Квартира'
@@ -175,7 +178,7 @@ use yii\helpers\Html;
           <div class="input w25">
               <?= $form->field($cartModel, 'entrance',
                   [
-                      'template' => '{input}'
+               //       'template' => '{input}'
                   ])->textInput([
                       'maxlength' => true,
                       'placeholder'=>'Під’їзд'
@@ -185,55 +188,24 @@ use yii\helpers\Html;
           <div class="input w25">
               <?= $form->field($cartModel, 'floor',
                   [
-                      'template' => '{input}'
+                 //     'template' => '{input}'
                   ])->textInput(['maxlength' => true,'placeholder' => 'Поверх']
               );
               ?>
           </div>
-            <?= $form->field($cartModel, 'status_order',
-                [
-                    'template' => '{input}'
-                ])->hiddenInput(['value'=> 'New']
-            )
-            ?>
+
         </div>
 
         <div class="delivery" id="delivery">
           <h5>Доставка</h5>
           <label class="radio">
 <!--            <input type="radio" name="delivery" id="newPost">-->
-              <?= $form->field($cartModel, 'delivery',
-                  [
-                      'template' => '{input}'
-                  ])->radioList(
-                            [
-                                1 => 'Нова Пошта (у відділення)',
-                                0 => 'Кур’єрам',
-                            ],
-                            [
-                                    'item' => function ($index, $label, $name, $checked, $value) {
-                                    switch ($value) {
-                                case 1:
-                                    $options = [
-                                        'label' => 'Нова Пошта (у відділення)',
-                                        'id' => 'newPost',
-                                        'name' => 'delivery',
-                                        'value' => 'Нова Пошта',
-                                    ];
-                                    break;
-                                case 0:
-                                    $options = [
-                                        'label' => 'Кур’єр по Києву (в поштову скриньку або консьєржу)',
-                                        'name' => 'delivery',
-                                        'value' => 'Кур’єрам',
-                                    ];
-                            }  return \yii\bootstrap\Html::radio($name, $checked, array_merge($options, [
-                                            'value' => $value,
-                                            'label' => \yii\bootstrap\Html::encode($label),
-                                        ]));
-                                    }]
-              )->label(false);
-              ?>
+              <?= $form->field($cartModel, 'delivery', [
+                 // 'template' => '{input}'
+              ])->radioList([
+                      Cart::DELIVERY_NOVA => 'Нова Пошта (у відділення)',
+                      Cart::DELIVERY_COUR => 'Кур’єрам',
+              ]) ?>
             <span>
               <div>
                   <img src="<?= Yii::getAlias('@web/img/order/newPost.svg') ?>" alt="">
@@ -244,7 +216,7 @@ use yii\helpers\Html;
           <div class="input" id="postNumber">
               <?= $form->field($cartModel, 'code_post',
                   [
-                      'template' => '{input}'
+                 //     'template' => '{input}'
                   ])->textInput(['maxlength' => true]
               )
               ?>
@@ -269,8 +241,8 @@ use yii\helpers\Html;
             </span>
           </label>
         </div>
-          <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
 
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
 <!--        </form>-->
       <div class="online">
         <a href="#">

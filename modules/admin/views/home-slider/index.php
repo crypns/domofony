@@ -96,7 +96,10 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                 ],
 				'name',
 				'description',
-				'image',
+                [
+                    'class' => app\custom\ImgColumn::className(),
+                    'attribute' => 'image',
+                ],
                 [
                     'attribute' => 'product_link',
                     'format' => 'raw',

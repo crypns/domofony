@@ -62,7 +62,11 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
     'attributes' => [
             'name',
         'description',
-        'image',
+        [
+            'attribute' => 'image',
+            'value' => $model->getFilePathByAttribute(),
+            'format' => ['image', ['height' => '300px']],
+        ],
         [
             'attribute' => 'product_link',
             'format' => 'raw',

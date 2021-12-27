@@ -24,7 +24,8 @@
         "bower-asset/angular-route": "^1.8",
         "codemix/yii2-localeurls": "^1.7",
         "kartik-v/yii2-money": "*",
-        "borales/yii2-phone-input": "*"
+        "borales/yii2-phone-input": "*",
+        "kartik-v/yii2-widget-fileinput": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

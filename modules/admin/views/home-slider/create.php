@@ -25,6 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model'=> $model,
+
+        'isAjax' => false,
+        'customPluginOptions' => [
+            'showUpload' => false,
+            'showCancel' => false,
+        ],
     ]) ?>
 
 </div>

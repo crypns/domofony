@@ -37,8 +37,26 @@ use app\models\ApartmentComplex;
     <!-- attribute `description` -->
     <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
     <!-- end attribute -->
-    <!-- attribute `image` -->
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <!-- attribute `photo` -->
+    <?= \app\widgets\FileInput::widget([
+        'form' => $form,
+        'model' => $model,
+        'fileAttribute' => $model::UPLOAD_FILE_ATTRIBUTE,
+        'multiple' => false,
+        'allowedFileExtensions' => ['jpg', 'jpeg', 'gif', 'png'],
+        'uploadExtraData' => isset($uploadExtraData) ? $uploadExtraData : [],
+
+        'initialPreview' => $model->getFilePathByAttribute(),
+        'initialPreviewConfig' => $model->getInititalPhotoPreviewConfig(),
+
+        'isAjax' => $isAjax,
+
+        'uploadUrl' => isset($uploadUrl) ? $uploadUrl : '',
+        'deleteUrl' => isset($deleteUrl) ? $deleteUrl : '',
+
+        'customOptions' => [],
+        'customPluginOptions' => $customPluginOptions,
+    ]); ?>
     <!-- end attribute -->
     <!-- attribute `product_link` -->
     <?= $form->field($model, 'product_link')->textInput(['maxlength' => true]) ?>

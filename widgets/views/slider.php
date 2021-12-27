@@ -17,12 +17,12 @@ use yii\bootstrap4\Html;
                     <div class="text">
                         <h1><?= $model->name?></h1>
                         <h5><?= $model->description?></h5>
-                        <a href="<?= $model->product_link?>">
+                        <a href="<?= $model->product_link?>" target="_blank">
                             <h5>Детальна інформація</h5>
                         </a>
                     </div>
                     <div class="img">
-                        <img src="<?= Yii::getAlias('@web/loaded/' . $model->image) ?>" alt="">
+                        <img src="<?= $model->getFilePathByAttribute(); ?>" alt="">
                     </div>
                 </div>
             <?php endforeach;?>
@@ -30,5 +30,6 @@ use yii\bootstrap4\Html;
         </div>
     </div>
 </section>
+
 
 
