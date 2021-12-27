@@ -1,9 +1,11 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap4\Tabs;
 use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\DetailView;
+use yii\bootstrap\ActiveForm;
 
 /**
 * @var yii\web\View $this
@@ -46,28 +48,22 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
 
     <hr/>
 
-    <?= DetailView::widget([
-    'model' => $model,
-    'attributes' => [
-        'full_name',
-        'phone_number',
-        'email:email',
-        'address',
-        'delivery',
-        [
-            'attribute'  => 'general_count',
-            'value'  => function ($model, $widget) {
-                return $model->general_count . ' шт.';
-            },
-        ],
-        [
-            'attribute'  => 'general_cost',
-            'value'  => function ($model, $widget) {
-                return Yii::$app->formatter->asCurrency($model->general_cost);
-            },
-        ],
-        'status_order',
-    ],
+    <?= Tabs::widget([
+        'items' => [
+            [
+                'label'     =>  Yii::t('models', 'Customer'),
+                'content'   =>  $this->renderAjax('_customer', [
+                    'model' => $model,
+                ]),
+                'active'    =>  true
+            ],
+            [
+                'label'     =>  Yii::t('models', 'Products'),
+                'content'   =>  $this->renderAjax('_customer', [
+                    'model' => $model,
+                ]),
+            ],
+        ]
     ]); ?>
 
     <hr/>

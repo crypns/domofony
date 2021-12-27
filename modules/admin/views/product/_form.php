@@ -3,6 +3,7 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 /**
 * @var yii\web\View $this
@@ -42,8 +43,26 @@ use yii\helpers\Url;
         ]
     ); ?>
     <!-- end attribute -->
-    <!-- attribute `image` -->
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <!-- attribute `photo` -->
+    <?= \app\widgets\FileInput::widget([
+        'form' => $form,
+        'model' => $model,
+        'fileAttribute' => $model::UPLOAD_FILE_ATTRIBUTE,
+        'multiple' => false,
+        'allowedFileExtensions' => ['jpg', 'jpeg', 'gif', 'png'],
+        'uploadExtraData' => isset($uploadExtraData) ? $uploadExtraData : [],
+
+        'initialPreview' => $model->getFilePathByAttribute(),
+        'initialPreviewConfig' => $model->getInititalPhotoPreviewConfig(),
+
+        'isAjax' => $isAjax,
+
+        'uploadUrl' => isset($uploadUrl) ? $uploadUrl : '',
+        'deleteUrl' => isset($deleteUrl) ? $deleteUrl : '',
+
+        'customOptions' => [],
+        'customPluginOptions' => $customPluginOptions,
+    ]); ?>
     <!-- end attribute -->
 
     <?= Html::submitButton(

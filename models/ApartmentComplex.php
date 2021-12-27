@@ -39,7 +39,7 @@ class ApartmentComplex extends BaseApartmentComplex
     public function rules()
     {
         return array_merge(parent::rules(), [
-            # custom validation rules
+            ['description', 'string', 'max' => 1000],
         ]);
     }
 }

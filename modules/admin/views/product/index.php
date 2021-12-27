@@ -62,6 +62,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
     </div>
 
     <div class="table-responsive">
+
         <?php Pjax::begin(); ?>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
@@ -109,7 +110,11 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 			    },
 			    'format' => 'raw',
 			],
-				'image',
+                [
+                    'class' => app\custom\ImgColumn::className(),
+                    'attribute' => 'image',
+                    'filter' => false,
+                ],
             ]
         ]); ?>
         <?php Pjax::end(); ?>

@@ -12,14 +12,16 @@ use app\models\HomeSlider as HomeSliderModel;
 */
 class HomeSlider extends HomeSliderModel
 {
+    public $complex_name;
+
     /**
     * @inheritdoc
     */
     public function rules()
     {
         return [
-            [['id', 'complex_id'], 'integer'],
-            [['name', 'description', 'image', 'product_link'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'description', 'image', 'product_link', 'complex_name'], 'string'],
         ];
     }
 
@@ -45,7 +47,18 @@ class HomeSlider extends HomeSliderModel
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-        ]);
+            'sort' => ['attributes' => [
+                'name',
+                'description',
+                'image',
+                'product_link',
+                'complex_name' => [
+                    'asc' => ['apartment_complexes.name' => SORT_ASC],
+                    'desc' => ['apartment_complexes.name' => SORT_DESC],
+                    'default' => SORT_DESC
+                ],
+            ],
+        ]]);
 
         $this->load($params);
 
@@ -55,15 +68,18 @@ class HomeSlider extends HomeSliderModel
             return $dataProvider;
         }
 
+        $query->joinWith('complex');
+
+
         $query->andFilterWhere([
             'id' => $this->id,
-            'complex_id' => $this->complex_id,
         ]);
 
-        $query->andFilterWhere(['ilike', 'name', $this->name])
-            ->andFilterWhere(['ilike', 'description', $this->description])
+        $query->andFilterWhere(['ilike', 'home_sliders.name', $this->name])
+            ->andFilterWhere(['ilike', 'home_sliders.description', $this->description])
             ->andFilterWhere(['ilike', 'image', $this->image])
-            ->andFilterWhere(['ilike', 'product_link', $this->product_link]);
+            ->andFilterWhere(['ilike', 'product_link', $this->product_link])
+            ->andFilterWhere(['ilike', 'apartment_complexes.name', $this->complex_name]);
 
         return $dataProvider;
     }

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\helpers\StringHelper;
+use yii\widgets\Pjax;
 
 /**
 * @var yii\web\View $this
@@ -62,6 +63,8 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
     </div>
 
     <div class="table-responsive">
+
+        <?php Pjax::begin(); ?>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'pager' => [
@@ -117,6 +120,8 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                 ],
             ]
         ]); ?>
+        <?php Pjax::end(); ?>
+
     </div>
 
 </div>

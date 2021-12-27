@@ -35,6 +35,23 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'Edit');
 
     <?= $this->render('_form', [
         'model'=> $model,
+
+        'isAjax' => true,
+
+        'uploadUrl' => Url::to(['/admin/file/upload']),
+        'deleteUrl' => Url::to(['/admin/file/delete-without-model']),
+
+        'uploadExtraData' => [
+            'id' => $model->id,
+            'className' => $model::className(),
+            'deleteUrl' => '/admin/file/delete-without-model',
+
+            'modelInitAttributes' => json_encode([
+            ]),
+        ],
+        'customPluginOptions' => [
+            'showCancel' => false,
+        ],
     ]) ?>
 
 </div>

@@ -71,7 +71,7 @@ use app\widgets\Slider;
       <div class="item">
         <div class="object">
           <div class="img">
-              <img src="<?= Yii::getAlias('@web/loaded/camera.jpg') ?>" alt="">
+              <img src="<?= $complexProduct->product->getFilePathByAttribute(); ?>" alt="">
           </div>
           <div class="name">
             <h6><?= $complexProduct->product->name ?></h6>

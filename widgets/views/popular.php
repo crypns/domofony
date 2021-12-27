@@ -11,18 +11,18 @@ use yii\bootstrap4\Html;
         <h4>Популярні товари</h4>
         <div class="slider">
 
-            <?php foreach ($populars as $popular_product): ?>
+            <?php foreach ($populars as $popularProduct): ?>
                 <div class="item">
                     <div class="img">
-                        <img src="<?= Yii::getAlias('@web/loaded/' . $popular_product->image) ?>" alt="">
+                        <img src="<?= $popularProduct->getFilePathByAttribute(); ?>" alt="">
                     </div>
                     <div class="info">
-                        <h5><?= $popular_product->name?></h5>
-                        <p class="p2"><?= $popular_product->product_code?></p>
-                        <p class="p1"><?= $popular_product->description?></p>
+                        <h5><?= $popularProduct->name?></h5>
+                        <p class="p2"><?= $popularProduct->product_code?></p>
+                        <p class="p1"><?= $popularProduct->description?></p>
                     </div>
                     <div class="button">
-                        <a href="<?= $popular_product->product_link?>" target = "_blank">
+                        <a href="<?= $popularProduct->product_link?>" target = "_blank">
                             <h6>Детальніше про товар</h6>
                         </a>
                     </div>

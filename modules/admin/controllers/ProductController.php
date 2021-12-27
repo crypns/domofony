@@ -90,7 +90,7 @@ class ProductController extends \yii\web\Controller
             }
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->saveWithFiles()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
