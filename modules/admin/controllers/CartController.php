@@ -10,6 +10,8 @@ use yii\filters\AccessControl;
 
 use app\models\Cart;
 use app\models\search\Cart as CartSearch;
+use app\models\CartProduct;
+use app\models\search\CartProduct as CartProductSearch;
 
 /**
 * CartController implements the CRUD actions for Cart model.
@@ -67,8 +69,16 @@ class CartController extends \yii\web\Controller
     */
     public function actionView($id)
     {
+        $cartModelSearchProduct  = new CartProductSearch;
+
+        $get = Yii::$app->request->queryParams;
+        $get['CartProduct']['cart_id'] = $get['id'];
+        $dataProvider = $cartModelSearchProduct->search($get);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider,
+            'cartModelSearchProduct' => $cartModelSearchProduct,
         ]);
     }
 

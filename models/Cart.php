@@ -95,4 +95,10 @@ class Cart extends BaseCart
     {
         return $this->full_name;
     }
+
+    public function getComplexProducts()
+    {
+        return $this->hasMany(\app\models\ComplexProduct::className(), ['id' => 'product_id'])
+            ->viaTable(\app\models\CartProduct::tableName(), ['cart_id' => 'id']);
+    }
 }

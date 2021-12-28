@@ -10,16 +10,18 @@ use app\models\CartProduct as CartProductModel;
 /**
 * CartProduct represents the model behind the search form about `app\models\CartProduct`.
 */
-class CartProduct extends CartProductModel
+class CartProduct extends ComplexProduct
 {
+    public $cart_id;
+
     /**
     * @inheritdoc
     */
     public function rules()
     {
-        return [
-            [['id', 'cart_id', 'product_id', 'count'], 'integer'],
-        ];
+        return array_merge(parent::rules(), [
+            [['cart_id'], 'integer'],
+        ]);
     }
 
     /**
@@ -38,12 +40,26 @@ class CartProduct extends CartProductModel
     *
     * @return ActiveDataProvider
     */
-    public function search($params)
+    public function search($params, $query = null)
     {
-        $query = CartProductModel::find();
+        $this->load($params);
+        $cartModel = Cart::findModel($this->cart_id);
+        $query = $cartModel
+            ->getCartProducts()
+//            ->getComplexProducts()
+            ->with('complexProduct.product.category');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+//            'sort' => ['attributes' => [
+//                'complex_product.product.name',
+//                'complex_product.product.category_name' => [
+//                    'asc' => ['categories.name' => SORT_ASC],
+//                    'desc' => ['categories.name' => SORT_DESC],
+//                    'default' => SORT_DESC
+//                ],
+//            ],
+//        ]
         ]);
 
         $this->load($params);
@@ -53,13 +69,6 @@ class CartProduct extends CartProductModel
             // $query->where('0=1');
             return $dataProvider;
         }
-
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'cart_id' => $this->cart_id,
-            'product_id' => $this->product_id,
-            'count' => $this->count,
-        ]);
 
         return $dataProvider;
     }

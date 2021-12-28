@@ -42,16 +42,17 @@ use app\models\Cart;
         <h6>Ваше замовлення</h6>
       </div>
 
-        <?php foreach ($cartProducts as $cartProduct): ?>
+        <?php foreach ($cartProducts as $index => $cartProduct): ?>
       <div class="item">
         <div class="img">
-            <img src="<?= Yii::getAlias('@web/loaded/camera.jpg') ?>" alt="">
+            <img src="<?= $cartProduct->complexProduct->product->getFilePathByAttribute(); ?>" alt="">
         </div>
         <div class="cont">
           <div class="name">
             <h6><?=$cartProduct->complexProduct->product->name?></h6>
-            <?= $form->field($cartProduct, 'product_id')->hiddenInput([
-                    'value' => $cartProduct->complexProduct->id,
+            <?= $form->field($cartProduct, "[$index]product_id", [
+                    'template' => "{input}"
+              ])->hiddenInput(['value' => $cartProduct->complexProduct->id,
             ])?>
           </div>
           <div class="counter">
@@ -61,7 +62,7 @@ use app\models\Cart;
               </svg>
             </div>
             <input type="text" value="0">
-              <?= $form->field($cartProduct, 'count', [
+              <?= $form->field($cartProduct, "[$index]count", [
                       'template' => '{input}'
               ])->textInput(['maxlength' => true]) ?>
               <div class="action" data-operation="add">

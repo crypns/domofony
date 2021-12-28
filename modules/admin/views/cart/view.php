@@ -59,8 +59,9 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
             ],
             [
                 'label'     =>  Yii::t('models', 'Products'),
-                'content'   =>  $this->renderAjax('_customer', [
+                'content'   =>  $this->renderAjax('_products', [
                     'model' => $model,
+                    'dataProvider' => $dataProvider,
                 ]),
             ],
         ]

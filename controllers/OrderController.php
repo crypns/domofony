@@ -56,13 +56,28 @@ class OrderController extends Controller
                 $productSum += $complexProduct->cost * $count;
             }
         }
+
+
+
         $cartModel = new Cart([
             'general_cost' => $productSum,
             'general_count' => $productCounter,
         ]);
 
-        if ($cartModel->load(Yii::$app->request->post()) && $cartModel->save()) {
-            return $this->redirect('/site/success');
+        if ($post = Yii::$app->request->post()) {
+            if ($cartModel->load($post) && $cartModel->save()) {
+                foreach ($post['CartProduct'] as $cartProductData) {
+                    $cartProductData['cart_id'] = $cartModel->id;
+                    $cartProduct = new CartProduct([
+                        'product_id' => $cartProductData['product_id'],
+                        'count' => $cartProductData['count'],
+                        'cart_id' => $cartProductData['cart_id'],
+                    ]);
+                    $cartProduct->save();
+                }
+
+                return $this->redirect('/site/success');
+            }
         }
 
 
