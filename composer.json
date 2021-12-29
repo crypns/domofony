@@ -25,7 +25,10 @@
         "codemix/yii2-localeurls": "^1.7",
         "kartik-v/yii2-money": "*",
         "borales/yii2-phone-input": "*",
-        "kartik-v/yii2-widget-fileinput": "dev-master"
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "dicr/yii2-liqpay": "^2.0",
+        "aki/yii2-bot-telegram": "*",
+        "aalaap/faker-youtube": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -38,12 +41,16 @@
         "codeception/module-filesystem": "^1.0.0",
         "codeception/module-yii2": "^1.0.0",
         "codeception/module-asserts": "^1.0.0",
-        "symfony/var-dumper": "^5.4"
+        "symfony/var-dumper": "^5.4",
+        "elisdn/yii2-gii-fixture-generator": "^1.1"
     },
     "config": {
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": false
         }
     },
     "scripts": {

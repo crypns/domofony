@@ -15,6 +15,7 @@ $config = array_merge($language, [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@admin' => '@app/modules/admin',
+
     ],
     'components' => [
         'authManager' => [
@@ -34,6 +35,10 @@ $config = array_merge($language, [
         'user' => [
             'identityClass' => 'app\models\default\User',
             'enableAutoLogin' => true,
+        ],
+        'telegram' => [
+            'class' => 'aki\telegram\Telegram',
+            'botToken' => '5040707194:AAFhxoJaIu3syh6__OmLmghaM3gdzjIeeaw',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -79,6 +84,15 @@ $config = array_merge($language, [
         'admin' => [
             'class' => 'app\modules\admin\Module',
         ],
+        'liqpay' => [
+            'class' => dicr\liqpay\LiqPayModule::class,
+            'publicKey' => 'ваш_публичный_ключ',
+            'privateKey' => 'ваш_приватный ключ',
+            // опционально обработчик callback с результатами оплаты
+            'checkoutHandler' => static function(dicr\liqpay\CheckoutResponse $response) {
+                // сохранение результата оплаты
+            }
+        ]
     ],
     'params' => $params,
 ]);

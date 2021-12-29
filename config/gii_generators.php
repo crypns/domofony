@@ -29,4 +29,10 @@ return [
             'seog_template' => '@app/custom/giiant/widgets',
         ]
     ],
+    'seog-fixtures' => [
+        'class' => 'app\custom\giiant\fixtures\Generator',
+        'templates' => [
+            'seog_template' => '@app/custom/giiant/fixtures',
+        ],
+    ],
 ];

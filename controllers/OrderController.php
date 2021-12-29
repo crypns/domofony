@@ -22,6 +22,8 @@ use app\models\default\PasswordResetRequestForm;
 use app\models\default\ResendVerificationEmailForm;
 use app\models\default\ResetPasswordForm;
 use app\models\Cart;
+use aki\telegram\Telegram;
+use aki\telegram\base\Command;
 
 
 class OrderController extends Controller
@@ -75,7 +77,18 @@ class OrderController extends Controller
                     ]);
                     $cartProduct->save();
                 }
+                Yii::$app->telegram->sendMessage([
+                    'chat_id' => Yii::$app->params['cart_id'],
+                    'text' => 'Номер заказа: ' . $cartModel->id . "\r\n"
+                        . 'Имя: ' . $cartModel->full_name . "\r\n"
+                        . 'Номер телефона: ' . $cartModel->phone_number . "\r\n"
+                        . 'Email: ' . $cartModel->email . "\r\n"
+                        . 'Общая стоимость заказа: ' . Yii::$app->formatter->asCurrency($cartModel->general_cost) . "\r\n"
+                        . Yii::$app->urlManager->createAbsoluteUrl(['admin/cart/view', 'id' => $cartModel->id]),
 
+
+
+                ]);
                 return $this->redirect('/site/success');
             }
         }

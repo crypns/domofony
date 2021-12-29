@@ -3,6 +3,8 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use app\models\Cart;
+use dicr\liqpay\LiqPayModule;
+
 
 
 

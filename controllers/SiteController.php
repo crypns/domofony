@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\ApartmentComplex;
+use app\models\Cart;
 use app\models\ComplexProduct;
 use app\models\HomeSlider;
 use app\models\PopularProduct;
@@ -333,7 +334,10 @@ class SiteController extends Controller
 
     public function actionSuccess()
     {
-        return $this->render('success');
+
+        return $this->render('success',[
+
+        ]);
     }
     public function actionMakePurchases()
     {

@@ -51,7 +51,7 @@ class Cart extends BaseCart
         return array_merge([
             ['email', 'email'],
             ['phone_number', \borales\extensions\phoneInput\PhoneInputValidator::className()],
-            [['street', 'house', 'apartment', 'entrance', 'floor'], 'trim', 'required', 'except' => self::SCENARIO_ADMIN_UPDATE],
+            [['street', 'house', 'apartment', 'entrance', 'floor'], 'required', 'except' => self::SCENARIO_ADMIN_UPDATE],
             [['address'], 'filter', 'filter' => function($value_address) {
                 if ($this->address) {
                     return $this->address;

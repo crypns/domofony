@@ -11,5 +11,6 @@ return [
     'supportEmail' => 'support@mail.ru',
     'bsDependencyEnabled' => false,
     'bsVersion' => '4.x',
+    'cart_id' => '469111794',
 
 ];
