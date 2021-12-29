@@ -121,6 +121,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                         ],
                     ),
                 ],
+                'created_at',
             ]
         ]); ?>
         <?php Pjax::end(); ?>
