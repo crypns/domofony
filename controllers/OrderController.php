@@ -35,12 +35,15 @@ class OrderController extends Controller
         $orders = $session->get('orders');
 
         $complexProductArrays = [];
-        foreach ($orders as $productID => $count) {
-            $complexProductArrays[] = [
-                'object' => ComplexProduct::findOne($productID),
-                'count' => $count,
-            ];
+        if ($orders) {
+          foreach ($orders as $productID => $count) {
+              $complexProductArrays[] = [
+                  'object' => ComplexProduct::findOne($productID),
+                  'count' => $count,
+              ];
+          }
         }
+
         $productCounter = 0;
         $productSum = 0;
 

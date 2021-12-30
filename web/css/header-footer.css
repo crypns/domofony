@@ -118,6 +118,7 @@ header .tels .nums a {
   margin-left: 10px;
   white-space: nowrap;
   display: block;
+  text-decoration: none;
 }
 
 .social {
@@ -360,4 +361,13 @@ footer .block .part .link a {
   footer .block .part.networks a {
     width: 100%;
   }
+}
+
+header.active-header {
+  justify-content: center;
+}
+
+header.active-header .tels,
+header.active-header .logo {
+  display: none;
 }

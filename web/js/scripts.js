@@ -4,7 +4,7 @@ var header = $('#header'),
 
   $(window).scroll(function() {
     var scrolled = $(window).scrollTop();
-   
+
     if ( scrolled > 0 && scrolled > scrollPrev ) {
       header.addClass('active');
     } else {
@@ -13,7 +13,7 @@ var header = $('#header'),
     scrollPrev = scrolled;
   });
 
- 
+
 //   if ($(window).width() < 400) {
 //     $('#header .logo img').attr('src','img/header/logo-small.svg');
 //   } else {
@@ -29,9 +29,14 @@ var header = $('#header'),
 //     }
 // });
 
-$(document).ready(function() {  
+$(document).ready(function() {
+  $(window).on("scroll", function() {
+    let height = 100;
+    $('#header').toggleClass("active-header", $(this).scrollTop() > height);
+  });
+
   var $close = $('#header .search .close');
-  
+
   $('#header .search input').on('keyup', function(){
     var search = $(this).val();
     var result = $('#header .search .results');
@@ -87,7 +92,7 @@ $(window).resize(function () {
     	$('#header .tels .nums').removeClass('transY0');
     	$('#header .search input').attr('placeholder','Введіть назву або адресу житлового комплексу (від 5 символів)');
     }
-}); 
+});
 
 $('#header .tels .handset').click(function() {
     if ($(window).width() < 700) {
@@ -137,7 +142,7 @@ $('#popular .slider').slick({
     }
   ]
 });
- 
+
 $('#video .slider').slick({
 		centerMode: true,
     adaptiveHeight: true,
@@ -167,9 +172,12 @@ $('#video .slider').slick({
 $('.counter .action').click(function(){
     //get the value of input field id-'qty'
     var qty = $(this).siblings('input').val();
-    
+    let { max } = $(this).data();
+
     if($(this).attr('data-operation')==='add'){
+      if(qty < max) {
         qty++;
+      }
     } else {
         qty--;
     }
@@ -190,7 +198,7 @@ $('.counter .action').click(function(){
     $(this).siblings('input').val(qty);
 
   //  console.log($(this).siblings('input'));
-    console.log($(this).siblings('input').val());
+    // console.log($(this).siblings('input').val());
 });
 
 $('#goods .item .interaction .button button').click(function() {
@@ -227,13 +235,13 @@ $('#order .item .delete').click(function() {
   });
 
 
-$(document).keydown(function(event) { 
-  if (event.keyCode == 27) { 
+$(document).keydown(function(event) {
+  if (event.keyCode == 27) {
     $('#header .search input').val('');
     $('#header .search .results').slideUp(300);
     $('#header .search .close').addClass('dn');
     if (($(window).width() < 700)){
     	  $('#header .tels .nums').addClass('transY0');
-    }     
+    }
   }
 });

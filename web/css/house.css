@@ -3,9 +3,10 @@
   width: calc(100% - 40px);
   margin: auto;
   position: fixed;
-  top: 100px;
+  bottom: 20px;
   left: 0;
   right: 0;
+  z-index: 100000;
   background: -o-radial-gradient(87.73% 0%, 71.97% 105%, #DA6263 0%, #8B1D1E 84.26%);
   background: radial-gradient(71.97% 105% at 87.73% 0%, #DA6263 0%, #8B1D1E 84.26%);
   -webkit-box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
@@ -28,6 +29,8 @@
   right: 0;
   top: 15px;
   margin: auto;
+  user-select: none;
+  text-decoration: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -35,6 +38,7 @@
 
 .order_block a h5 {
   color: #8B1D1E;
+  margin-bottom: 0;
 }
 
 .order_block a:hover h5 {
@@ -54,6 +58,7 @@
 .order_block .cart h5 {
   color: #fff;
   margin-right: 15px;
+  margin-bottom: 0;
 }
 
 section.house .address h1,
@@ -76,9 +81,9 @@ section.house .description p {
 }
 
 section.banner.solitary .slider {
-  background: #fff;
+  /* background: #fff;
   -webkit-box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
-          box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
+          box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3; */
   border-radius: 10px;
 }
 
@@ -93,6 +98,10 @@ section.banner.solitary .item {
 section.banner.solitary .item .img {
   max-width: 350px;
   width: 100%;
+}
+
+section.goods {
+  margin-bottom: 50px;
 }
 
 section.goods .head {
@@ -317,6 +326,7 @@ section.goods .item .interaction .button button:hover h6 {
   .order_block a h5 {
     font-size: 20px;
     line-height: 24px;
+    margin: 0;
   }
 
   .order_block .cart h5 {

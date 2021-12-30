@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
          //'js/jquery-3.6.0.min.js',
         'js/slick.min.js',
         'js/scripts.js',
+        'js/rebuild.js',
     ];
 
 
@@ -41,7 +42,7 @@ class AppAsset extends AssetBundle
         // In JS use: yiiGlobal.test, etc.
         $options = [
             'test' => Url::to(['test/test']),
-            
+
             'authKey' => Yii::$app->user->identity?->access_token,
         ];
         Yii::$app->view->registerJs(
