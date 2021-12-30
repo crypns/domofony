@@ -340,7 +340,7 @@ section.video .block .arrows .slick-arrow {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 10;
 }
 
 section.video .block .arrows .slick-arrow:hover {
