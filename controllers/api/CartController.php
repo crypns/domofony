@@ -26,7 +26,7 @@ class CartController extends \app\custom\BaseApiController
                     'allow' => true,
                     'matchCallback' => function ($rule, $action) {
                         $permissionName = $this->module->id . '_' . \yii\helpers\StringHelper::basename($this->id) . '_' . $action->id;
-                        
+
                         return \Yii::$app->user->can($permissionName, ['route' => true]);
                     },
                 ],
@@ -35,7 +35,7 @@ class CartController extends \app\custom\BaseApiController
                     'matchCallback' => function ($rule, $action) {
                         $permissionName = $this->module->id . '_' . \yii\helpers\StringHelper::basename($this->id);
                         $permissionName = \yii\helpers\Inflector::camelize($permissionName) . 'Full';
-                        
+
                         return \Yii::$app->user->can($permissionName, ['route' => true]);
                     },
                 ],
@@ -75,6 +75,7 @@ class CartController extends \app\custom\BaseApiController
 
         $session->set('orders', $orders);
 
+        return count($orders);
     }
 
     /**
@@ -99,7 +100,7 @@ class CartController extends \app\custom\BaseApiController
      * Creates new $this->modelClass
      *
      * @param id int
-     * @param 
+     * @param
      *
      * @throws \yii\web\UnprocessableEntityHttpException (HTTP 422) When model not saved
      *
@@ -117,7 +118,7 @@ class CartController extends \app\custom\BaseApiController
      * Updates $this->modelClass
      *
      * @param id int
-     * @param 
+     * @param
      *
      * @throws \yii\web\UnprocessableEntityHttpException (HTTP 422) When model not saved
      *

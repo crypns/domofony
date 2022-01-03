@@ -172,7 +172,7 @@ $('#video .slider').slick({
 $('.counter .action').click(function(){
     //get the value of input field id-'qty'
     var qty = $(this).siblings('input').val();
-    let { max } = $(this).data();
+    let { max, type, cost } = $(this).data();
 
     if($(this).attr('data-operation')==='add'){
       if(qty < max) {
@@ -181,9 +181,40 @@ $('.counter .action').click(function(){
     } else {
         qty--;
     }
+
     //i don't want to go below 0
     if (qty < 0) {
         qty = 0;
+    }
+
+    if (type === 'orders') {
+      let count = $(this).closest('.counter').find('.special').val()
+
+      if( $(this).attr('data-operation') === 'add' ){
+        if(count < max) {
+          count++;
+        }
+
+        $('.total .price span').text( +$('.total .price span').text() + cost )
+      } else {
+          count--;
+          $('.total .price span').text( +$('.total .price span').text() - cost )
+      }
+
+      if (count < 0) {
+          count = 0;
+          $('.total .price span').text(0)
+      }
+
+      $(this).closest('.counter').find('.special').val(count)
+
+      let sum = 0
+      $('.order .item .special').each((index, item) => {
+        sum += +$(item).val()
+      })
+
+      // Change global quantity
+      $('.quantity').text(sum)
     }
 
     if (qty > 0) {
@@ -210,12 +241,12 @@ $('#goods .item .interaction .button button').click(function() {
     $.ajax({
         url: '/api/cart/add-to-cart',         /* Куда пойдет запрос */
         method: 'post',             /* Метод передачи (post или get) */
-        data: {
-            count: count,
-            product_id: product_id,
-        },     /* Параметры передаваемые в запросе. */
+        data: {count, product_id},     /* Параметры передаваемые в запросе. */
         success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
             data = JSON.parse(data);
+            if (data) {
+              $('#productCount').text(data)
+            }
         }
     });
   });
@@ -230,9 +261,16 @@ $('#delivery label').click(function() {
 });
 
 $('#order .item .delete').click(function() {
-    $(this).closest('.item').css('display','none');
+  // Change values before delete
+  let count = $(this).closest('.item').find('.special').val()
+  let { cost } = $(this).data()
 
-  });
+  $('.total .price span').text( +$('.total .price span').text() - (cost * count) )
+  $('.quantity').text( +$('.quantity').text() - count )
+
+  // Delete from DOM
+  $(this).closest('.item').remove()
+});
 
 
 $(document).keydown(function(event) {
