@@ -11,12 +11,12 @@ use yii\bootstrap4\Html;
 <section class="video" id="video">
     <div class="block">
         <h4>Відеоогляди</h4>
-        <div class="slider">
+        <div class="slider <?= count($youtube) < 4 ? 'special' : '' ?>">
 
             <?php foreach ($youtube as $youtubeSlides): ?>
-            <div class="item">
+              <div class="item">
                     <?=$youtubeSlides->youtube_link?>
-            </div>
+              </div>
             <?php endforeach;?>
 
         </div>

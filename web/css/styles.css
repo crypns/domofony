@@ -1,3 +1,4 @@
+
 section.banner {
   padding: 0 0 115px;
 }
@@ -49,6 +50,7 @@ section.banner .slider .item .text a {
   width: -moz-max-content;
   width: max-content;
   border: 1px solid #165E94;
+  text-decoration: none;
 }
 
 section.banner .slider .item .text a:hover {
@@ -181,6 +183,8 @@ section.popular .block .slider .item .button a {
   -webkit-box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
           box-shadow: 0px 4px 8px rgba(221, 223, 243, 0.75), 0px 1px 2px #DDDFF3;
   border-radius: 8px;
+  text-decoration: none;
+  user-select: none;
 }
 
 section.popular .block .slider .item .button a h6 {
@@ -301,6 +305,14 @@ section.video .block .slider .slick-slide {
   margin: 0 -40px;
 }
 
+/* section.video .block .slider:not(.special) .slick-slide:not(.slick-center) {
+  -webkit-transform: scale(0.75);
+      -ms-transform: scale(0.75);
+          transform: scale(0.75);
+  cursor: pointer;
+  opacity: 0.5;
+} */
+
 section.video .block .slider .slick-slide:not(.slick-center) {
   -webkit-transform: scale(0.75);
       -ms-transform: scale(0.75);
@@ -340,7 +352,7 @@ section.video .block .arrows .slick-arrow {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 10;
 }
 
 section.video .block .arrows .slick-arrow:hover {
@@ -378,12 +390,15 @@ section.video .block .our_channel {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  margin: 50px 0 0 auto;
+  margin: 0 auto;
+  margin-top: 50px;
   border: 1px solid #165E94;
+  text-decoration: none;
 }
 
 section.video .block .our_channel h6 {
   color: #165E94;
+  margin: 0;
   margin-left: 12px;
 }
 
@@ -478,7 +493,30 @@ section.video .block .our_channel:hover h6 {
     line-height: 24px;
   }
 }
+
 .container-fluid{
   padding-right: 0;
   padding-left: 0;
  }
+
+.slider.special .slick-track{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider.special .slick-track .item.slick-slide {
+  width: auto !important;
+  margin: 0 5%;
+}
+
+.slider:not(.special) .item.slick-slide iframe {
+  width: auto !important;
+}
+
+.slider:not(.special) .item.slick-slide  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

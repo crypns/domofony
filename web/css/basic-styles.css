@@ -172,6 +172,14 @@ p.p2 {
   gap: 2px;
 }
 
+.counter .form-group {
+  margin-bottom: 0;
+}
+
+.counter input[type=text] {
+  margin: 0 10px;
+}
+
 .counter .action {
   width: 30px;
   height: 30px;
