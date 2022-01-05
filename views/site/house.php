@@ -1,6 +1,9 @@
 <?php
 use app\widgets\Video;
 use app\widgets\Slider;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
 /* @var $youtubeSlides array */
 /* @var $sliders array */
 /* @var $model array */
