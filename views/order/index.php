@@ -124,7 +124,6 @@ use dicr\liqpay\LiqPayModule;
                 ?>
 
                 <div class="input">
-                    <h6>+38</h6>
                     <?= $form->field($cartModel, 'phone_number')->widget(\borales\extensions\phoneInput\PhoneInput::className(), [
                         'jsOptions' => [
                             'class' => null,
