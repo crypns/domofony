@@ -13,7 +13,7 @@ use yii\bootstrap4\Html;
         <div class="slider">
 
             <?php foreach ($models as $model): ?>
-                <div class="item">
+                <div class="item row-mode">
                     <div class="text">
                         <h1><?= $model->name?></h1>
                         <h5><?= $model->description?></h5>
@@ -30,6 +30,3 @@ use yii\bootstrap4\Html;
         </div>
     </div>
 </section>
-
-
-
