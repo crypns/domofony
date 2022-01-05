@@ -88,7 +88,7 @@ class OrderController extends Controller
                 $request = $liqpay->checkoutRequest([
                     'returnUrl' => Yii::$app->urlManager->createAbsoluteUrl('/site/success'),
                     'orderId' => $cartModel->id,
-                    'amount' => Yii::$app->formatter->asCurrency($cartModel->general_cost),
+                    'amount' => $cartModel->general_cost,
                     'description' => 'Оплата заказа №' . $cartModel->id,
                 ]);
                 // переадресуем клиента на страницу оплаты
