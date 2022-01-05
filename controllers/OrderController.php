@@ -85,6 +85,7 @@ class OrderController extends Controller
 
                 // создаем запрос платежа
                 $request = $liqpay->checkoutRequest([
+                    'result_url' => '/site/success',
                     'orderId' => $cartModel->id,
                     'amount' => Yii::$app->formatter->asCurrency($cartModel->general_cost),
                     'description' => 'Оплата заказа №' . $cartModel->id,
