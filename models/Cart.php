@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 use \app\models\base\Cart as BaseCart;
-use yii\helpers\html;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "carts".
