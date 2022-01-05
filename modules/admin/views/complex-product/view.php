@@ -81,12 +81,12 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'View');
                 :
                 '<span class="label label-warning">?</span>'),
         ],
-        [
-            'attribute'  => 'count',
-            'value'  => function ($model, $widget) {
-                return $model->count . ' шт.';
-            },
-        ],
+//        [
+//            'attribute'  => 'count',
+//            'value'  => function ($model, $widget) {
+//                return $model->count . ' шт.';
+//            },
+//        ],
         [
                 'attribute'  => 'cost',
                 'value'  => function ($model, $widget) {

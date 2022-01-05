@@ -13,11 +13,11 @@ class ApartmentComplex extends BaseApartmentComplex
 
     public function beforeDelete()
     {
-        $products = ComplexProduct::find()->where(['category_id' => $this->id])->all();
-        if (!empty($products)) {
+        $complexProducts = ComplexProduct::find()->where(['complex_id' => $this->id])->all();
+        if (!empty($complexProducts)) {
             Yii::$app->session->setFlash(
                 'error',
-                'Нельзя удалить категорию, содержащию товары'
+                'Нельзя удалить ЖК, для которого существуют товары'
             );
             return false;
         }

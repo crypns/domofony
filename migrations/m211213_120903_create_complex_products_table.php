@@ -18,7 +18,7 @@ class m211213_120903_create_complex_products_table extends Migration
             'id' => $this->primaryKey(),
             'complex_id' => $this->integer()->notNull()->comment('Название ЖК'),
             'product_id' => $this->integer()->notNull()->comment('Название товара'),
-            'count' => $this->integer()->notNull()->comment('Количество товара'),
+            'count' => $this->integer()->comment('Количество товара'),
             'cost' => $this->integer()->notNull()->comment('Стоимость товара'),
         ], $timestampColumns));
         $this->addForeignKey(

@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\grid\GridView;
 use app\models\Cart;
 use yii\widgets\Pjax;
+use kartik\field\FieldRange;
 
 /**
  * @var yii\web\View $this
@@ -97,7 +98,14 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                         $attributeName = $column->attribute;
 
                         return $model->$attributeName . ' шт.';
-                    }
+                    },
+                    'contentOptions' => ['style' => 'min-width: 250px'],
+                    'filter' => \kartik\field\FieldRange::widget([
+                        'template' => '{widget}{error}',
+                        'model' => $searchModel,
+                        'attribute1' => 'from_general_count',
+                        'attribute2' => 'to_general_count',
+                    ]),
                 ],
                 [
                     'class' => yii\grid\DataColumn::className(),
@@ -106,7 +114,14 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                         $attributeName = $column->attribute;
 
                         return Yii::$app->formatter->asCurrency($model->$attributeName);
-                    }
+                    },
+                    'contentOptions' => ['style' => 'min-width: 250px'],
+                    'filter' => \kartik\field\FieldRange::widget([
+                        'template' => '{widget}{error}',
+                        'model' => $searchModel,
+                        'attribute1' => 'from_general_cost',
+                        'attribute2' => 'to_general_cost',
+                    ]),
                 ],
                 [
                     'class' => yii\grid\DataColumn::className(),
@@ -114,6 +129,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                     'value' => function ($model) {
                         return $model::STATUSES[$model->status_order];
                     },
+
                     'filter' => Html::activeDropDownList($searchModel, 'status_order', Cart::STATUSES,
                         [
                             'class' => 'form-control',
@@ -121,7 +137,17 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                         ],
                     ),
                 ],
-                'created_at',
+                [
+                    'attribute' => 'created_at',
+                    'contentOptions' => ['style' => 'min-width: 350px'],
+                    'filter' => \kartik\field\FieldRange::widget([
+                        'model' => $searchModel,
+                        'attribute1' => 'from_created_at',
+                        'attribute2' => 'to_created_at',
+                        'type' => FieldRange::INPUT_DATETIME,
+                    ]),
+
+                ]
             ]
         ]); ?>
         <?php Pjax::end(); ?>

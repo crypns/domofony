@@ -120,16 +120,22 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                     },
                     'format' => 'raw',
                 ],
-                [
-                    'class' => yii\grid\DataColumn::className(),
-                    'attribute' => 'count',
-                    'value' => function($model, $key, $index, $column) {
-                        $attributeName = $column->attribute;
-
-                        return $model->$attributeName . ' шт.';
-                    }
-                ],
-
+//                [
+//                    'class' => yii\grid\DataColumn::className(),
+//                    'attribute' => 'count',
+//                    'value' => function($model, $key, $index, $column) {
+//                        $attributeName = $column->attribute;
+//
+//                        return $model->$attributeName . ' шт.';
+//                    },
+//                    'contentOptions' => ['style' => 'min-width: 250px'],
+//                    'filter' => \kartik\field\FieldRange::widget([
+//                        'template' => '{widget}{error}',
+//                        'model' => $searchModel,
+//                        'attribute1' => 'from_count',
+//                        'attribute2' => 'to_count',
+//                    ]),
+//                ],
                 [
                     'class' => yii\grid\DataColumn::className(),
                     'attribute' => 'cost',
@@ -137,7 +143,14 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                         $attributeName = $column->attribute;
 
                         return Yii::$app->formatter->asCurrency($model->$attributeName);
-                    }
+                    },
+                    'contentOptions' => ['style' => 'min-width: 250px'],
+                    'filter' => \kartik\field\FieldRange::widget([
+                        'template' => '{widget}{error}',
+                        'model' => $searchModel,
+                        'attribute1' => 'from_cost',
+                        'attribute2' => 'to_cost',
+                    ]),
                 ],
             ]
         ]); ?>
