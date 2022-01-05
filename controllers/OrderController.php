@@ -9,6 +9,7 @@ use app\models\HomeSlider;
 use app\models\PopularProduct;
 use app\models\YoutubeSlider;
 use app\widgets\Header;
+use http\Url;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -85,7 +86,7 @@ class OrderController extends Controller
 
                 // создаем запрос платежа
                 $request = $liqpay->checkoutRequest([
-                    'result_url' => '/site/success',
+                    'result_url' => Yii::$app->urlManager->createAbsoluteUrl('/site/success'),
                     'orderId' => $cartModel->id,
                     'amount' => Yii::$app->formatter->asCurrency($cartModel->general_cost),
                     'description' => 'Оплата заказа №' . $cartModel->id,
