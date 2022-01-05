@@ -37,12 +37,12 @@ class OrderController extends Controller
 
         $complexProductArrays = [];
         if ($orders) {
-          foreach ($orders as $productID => $count) {
-              $complexProductArrays[] = [
-                  'object' => ComplexProduct::findOne($productID),
-                  'count' => $count,
-              ];
-          }
+            foreach ($orders as $productID => $count) {
+                $complexProductArrays[] = [
+                    'object' => ComplexProduct::findOne($productID),
+                    'count' => $count,
+                ];
+            }
         }
 
         $productCounter = 0;
@@ -64,7 +64,6 @@ class OrderController extends Controller
         }
 
 
-
         $cartModel = new Cart([
             'general_cost' => $productSum,
             'general_count' => $productCounter,
@@ -81,6 +80,18 @@ class OrderController extends Controller
                     ]);
                     $cartProduct->save();
                 }
+                /** @var LiqPayModule $liqpay получаем модуль */
+                $liqpay = Yii::$app->getModule('liqpay');
+
+                // создаем запрос платежа
+                $request = $liqpay->checkoutRequest([
+                    'orderId' => $cartModel->id,
+                    'amount' => Yii::$app->formatter->asCurrency($cartModel->general_cost),
+                    'description' => 'Оплата заказа №' . $cartModel->id,
+                ]);
+                // переадресуем клиента на страницу оплаты
+                $request->redirect();
+
                 Yii::$app->telegram->sendMessage([
                     'chat_id' => Yii::$app->params['cart_id'],
                     'text' => 'Номер заказа: ' . $cartModel->id . "\r\n"
@@ -90,22 +101,8 @@ class OrderController extends Controller
                         . 'Общая стоимость заказа: ' . Yii::$app->formatter->asCurrency($cartModel->general_cost) . "\r\n"
                         . Yii::$app->urlManager->createAbsoluteUrl(['admin/cart/view', 'id' => $cartModel->id]),
 
-
-
                 ]);
-                /** @var LiqPayModule $liqpay получаем модуль */
-                $liqpay = Yii::$app->getModule('liqpay');
-
-// создаем запрос платежа
-                $request = $liqpay->checkoutRequest([
-                    'orderId' => 56894,
-                    'amount' => 1234.23,
-                    'description' => 'Оплата заказа №56894'
-                ]);
-
-// переадресуем клиента на страницу оплаты
-                $request->redirect();
-              //  return $this->redirect('/site/success');
+                //  return $this->redirect('/site/success');
             }
         }
 
