@@ -24,6 +24,7 @@ use app\models\default\ResetPasswordForm;
 use app\models\Cart;
 use aki\telegram\Telegram;
 use aki\telegram\base\Command;
+use dicr\liqpay\LiqPayModule;
 
 
 class OrderController extends Controller
@@ -92,7 +93,19 @@ class OrderController extends Controller
 
 
                 ]);
-                return $this->redirect('/site/success');
+                /** @var LiqPayModule $liqpay получаем модуль */
+                $liqpay = Yii::$app->getModule('liqpay');
+
+// создаем запрос платежа
+                $request = $liqpay->checkoutRequest([
+                    'orderId' => 56894,
+                    'amount' => 1234.23,
+                    'description' => 'Оплата заказа №56894'
+                ]);
+
+// переадресуем клиента на страницу оплаты
+                $request->redirect();
+              //  return $this->redirect('/site/success');
             }
         }
 

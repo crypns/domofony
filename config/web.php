@@ -86,8 +86,8 @@ $config = array_merge($language, [
         ],
         'liqpay' => [
             'class' => dicr\liqpay\LiqPayModule::class,
-            'publicKey' => 'ваш_публичный_ключ',
-            'privateKey' => 'ваш_приватный ключ',
+            'publicKey' => 'sandbox_i92749472824',
+            'privateKey' => 'sandbox_vly1EuFgkoSewqeATw4pl9fNtWZOJpCIqAIaHD8M',
             // опционально обработчик callback с результатами оплаты
             'checkoutHandler' => static function(dicr\liqpay\CheckoutResponse $response) {
                 // сохранение результата оплаты

@@ -50,7 +50,7 @@ use yii\helpers\Url;
     ); ?>
     <!-- end attribute -->
     <!-- attribute `count` -->
-    <?= $form->field($model, 'count')->textInput(['type' => 'number', 'min'=>'0']) ?>
+<!--    --><?//= $form->field($model, 'count')->textInput(['type' => 'number', 'min'=>'0']) ?>
     <!-- end attribute -->
     <!-- attribute `cost` -->
     <?= $form->field($model, 'cost')->widget(\kartik\money\MaskMoney::className(), [

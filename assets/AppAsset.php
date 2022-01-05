@@ -36,6 +36,7 @@ class AppAsset extends AssetBundle
         'yii\bootstrap4\BootstrapAsset',
         'yii\web\JqueryAsset',
         'app\assets\AngularAsset',
+        'kartik\icons\FontAwesomeAsset',
     ];
 
     public function init() {

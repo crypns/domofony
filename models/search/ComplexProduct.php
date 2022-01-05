@@ -14,6 +14,11 @@ class ComplexProduct extends ComplexProductModel
 {
     public $complex_name;
     public $product_name;
+    public $from_count;
+    public $to_count;
+    public $from_cost;
+    public $to_cost;
+
 
     /**
      * @inheritdoc
@@ -22,6 +27,7 @@ class ComplexProduct extends ComplexProductModel
     {
         return [
             [['id', 'count', 'cost'], 'integer'],
+            [['from_count', 'to_count', 'from_cost', 'to_cost'], 'double'],
             [['complex_name', 'product_name'], 'string'],
         ];
     }
@@ -79,6 +85,16 @@ class ComplexProduct extends ComplexProductModel
             'id' => $this->id,
             'count' => $this->count,
             'cost' => $this->cost,
+        ]);
+
+        $query->andFilterWhere(['AND',
+            ['>=', 'count', $this->from_count],
+            ['<=', 'count', $this->to_count],
+        ]);
+
+        $query->andFilterWhere(['AND',
+            ['>=', 'cost', $this->from_cost],
+            ['<=', 'cost', $this->to_cost],
         ]);
 
         $query->andFilterWhere(['ilike', 'apartment_complexes.name', $this->complex_name])

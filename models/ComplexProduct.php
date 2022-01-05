@@ -11,6 +11,19 @@ use \app\models\base\ComplexProduct as BaseComplexProduct;
 class ComplexProduct extends BaseComplexProduct
 {
 
+    public function beforeDelete()
+    {
+        $flag = true;
+        foreach ($this->cartProducts as $cartProductModel) {
+            $flag &= $cartProductModel->delete();
+        }
+        Yii::$app->session->setFlash(
+            'success',
+            'Товар и связанные с ним данные были удалены успешно.'
+        );
+        return $flag && parent::beforeDelete();
+    }
+
     // Use this method to set primary name column if it has not standart name
     public function getLabel()
     {

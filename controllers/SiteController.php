@@ -326,7 +326,9 @@ class SiteController extends Controller
 
         $return = \yii\helpers\ArrayHelper::map($apartments, function ($element) {
             return \yii\helpers\Url::to(['/site/house', 'id' => $element['id']]);
-        }, 'name');
+        }, function ($element) {
+            return $element->name . ', ' . $element->address;
+        });
 
         return json_encode($return);
     }

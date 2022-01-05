@@ -12,6 +12,13 @@ use app\models\Cart as CartModel;
 */
 class Cart extends CartModel
 {
+    public $from_general_cost;
+    public $to_general_cost;
+    public $from_general_count;
+    public $to_general_count;
+    public $from_created_at;
+    public $to_created_at;
+
     /**
     * @inheritdoc
     */
@@ -19,6 +26,8 @@ class Cart extends CartModel
     {
         return [
             [['id', 'general_cost', 'general_count'], 'integer'],
+            [['from_general_count', 'to_general_count', 'from_general_cost', 'to_general_cost'], 'double'],
+            [['from_created_at', 'to_created_at'], 'string'],
             [['full_name', 'phone_number', 'email', 'address', 'delivery', 'status_order'], 'safe'],
         ];
     }
@@ -59,6 +68,19 @@ class Cart extends CartModel
             'id' => $this->id,
             'general_cost' => $this->general_cost,
             'general_count' => $this->general_count,
+        ]);
+
+        $query->andFilterWhere(['AND',
+            ['>=', 'general_cost', $this->from_general_cost],
+            ['<=', 'general_cost', $this->to_general_cost],
+        ]);
+        $query->andFilterWhere(['AND',
+            ['>=', 'general_count', $this->from_general_count],
+            ['<=', 'general_count', $this->to_general_count],
+        ]);
+        $query->andFilterWhere(['AND',
+            ['>=', 'created_at', $this->from_created_at],
+            ['<=', 'created_at', $this->to_created_at],
         ]);
 
         $query->andFilterWhere(['ilike', 'full_name', $this->full_name])

@@ -28,7 +28,10 @@
         "kartik-v/yii2-widget-fileinput": "dev-master",
         "dicr/yii2-liqpay": "^2.0",
         "aki/yii2-bot-telegram": "*",
-        "aalaap/faker-youtube": "^2.0"
+        "aalaap/faker-youtube": "^2.0",
+        "kartik-v/yii2-field-range": "dev-master",
+        "kartik-v/yii2-widget-datetimepicker": "dev-master",
+        "kartik-v/yii2-icons": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

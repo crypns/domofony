@@ -55,7 +55,7 @@ abstract class ComplexProduct extends \app\custom\ActiveRecord
     public function rules()
     {
         return [
-            [['complex_id', 'product_id', 'count', 'cost'], 'required'],
+            [['complex_id', 'product_id', 'cost'], 'required'],
             [['complex_id', 'product_id', 'count', 'cost'], 'default', 'value' => null],
             [['complex_id', 'product_id', 'count', 'cost'], 'integer'],
             [['complex_id'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\ApartmentComplex::className(), 'targetAttribute' => ['complex_id' => 'id']],
