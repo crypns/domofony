@@ -12,7 +12,7 @@ use app\widgets\Slider;
 <?php //dd( $youtubeSlides[0])  ?>
 
 <div class="order_block df dn" id="order_block">
-    <a href="http://localhost/order/index">
+    <a href="<?= Url::to(['order/index']);?>">
       <h5>Оформити замовлення</h5>
     </a>
     <div class="cart">
