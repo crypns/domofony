@@ -101,6 +101,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 			[
 			    'class' => yii\grid\DataColumn::className(),
 			    'attribute' => 'category_name',
+                'label' => Yii::t('models', 'Category Name'),
 			    'value' => function ($model) {
 			        if ($rel = $model->category) {
 			            return Html::a($rel->name, ['category/view', 'id' => $rel->id,], ['data-pjax' => 0]);

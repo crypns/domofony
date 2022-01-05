@@ -81,6 +81,7 @@ class OrderController extends Controller
                     ]);
                     $cartProduct->save();
                 }
+
                 /** @var LiqPayModule $liqpay получаем модуль */
                 $liqpay = Yii::$app->getModule('liqpay');
 
@@ -91,6 +92,7 @@ class OrderController extends Controller
                     'amount' => $cartModel->general_cost,
                     'description' => 'Оплата заказа №' . $cartModel->id,
                 ]);
+
                 // переадресуем клиента на страницу оплаты
                 $request->redirect();
 

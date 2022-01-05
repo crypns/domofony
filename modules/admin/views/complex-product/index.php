@@ -98,6 +98,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                 [
                     'class' => yii\grid\DataColumn::className(),
                     'attribute' => 'complex_name',
+                    'label' => Yii::t('models', 'Complex Name'),
                     'value' => function ($model) {
                         if ($rel = $model->complex) {
                             return Html::a($rel->name, ['apartment-complex/view', 'id' => $rel->id,], ['data-pjax' => 0]);
@@ -111,6 +112,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                 [
                     'class' => yii\grid\DataColumn::className(),
                     'attribute' => 'product_name',
+                    'label' => Yii::t('models', 'Product Name'),
                     'value' => function ($model) {
                         if ($rel = $model->product) {
                             return Html::a($rel->name, ['product/view', 'id' => $rel->id,], ['data-pjax' => 0]);

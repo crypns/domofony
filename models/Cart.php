@@ -85,7 +85,7 @@ class Cart extends BaseCart
             [['delivery'], 'filter', 'filter' => function($value_delivery) {
                 if ($this->delivery == Cart::DELIVERY_NOVA) {
 
-                    return $this->delivery . ' Номер отделения: ' . $this->code_post;
+                    return $this->delivery . ' | Номер відділення: ' . $this->code_post;
                 }
                 return $this->delivery;
             }],

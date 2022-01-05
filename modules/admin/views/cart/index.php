@@ -101,6 +101,9 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                     },
                     'contentOptions' => ['style' => 'min-width: 250px'],
                     'filter' => \kartik\field\FieldRange::widget([
+                        'pluginOptions' => [
+                            'language' => 'ru',
+                        ],
                         'template' => '{widget}{error}',
                         'model' => $searchModel,
                         'attribute1' => 'from_general_count',
