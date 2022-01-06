@@ -19,19 +19,7 @@ $this->params['breadcrumbs'][] = Yii::t('cruds', 'Edit');
 
     <h1>
         <?= Yii::t('models', 'Setting') ?>
-        <small>
-            <?= Html::encode($model->id) ?>
-        </small>
     </h1>
-
-    <div class="crud-navigation">
-        <?= Html::a(
-            Yii::t('cruds', 'View'), 
-            ['view', 'id' => $model->id], 
-            ['class' => 'btn btn-primary']) 
-        ?>
-    </div>
-    <br>
 
 
     <div class="setting-form">

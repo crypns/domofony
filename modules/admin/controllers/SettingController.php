@@ -110,7 +110,7 @@ class SettingController extends \yii\web\Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+            return $this->redirect('update?id=1');
         }
         
         return $this->render('update', [

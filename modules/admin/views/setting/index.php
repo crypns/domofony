@@ -18,17 +18,17 @@ $this->params['breadcrumbs'][] = $this->title;
 */
 $actionColumnTemplates = [];
 
-if (\Yii::$app->user->can('app_setting_view', ['route' => true])) {
-    $actionColumnTemplates[] = '{view}';
-}
-
-if (\Yii::$app->user->can('app_setting_update', ['route' => true])) {
-    $actionColumnTemplates[] = '{update}';
-}
-
-if (\Yii::$app->user->can('app_setting_delete', ['route' => true])) {
-    $actionColumnTemplates[] = '{delete}';
-}
+//if (\Yii::$app->user->can('app_setting_view', ['route' => true])) {
+//    $actionColumnTemplates[] = '{view}';
+//}
+//
+//if (\Yii::$app->user->can('app_setting_update', ['route' => true])) {
+//    $actionColumnTemplates[] = '{update}';
+//}
+//
+//if (\Yii::$app->user->can('app_setting_delete', ['route' => true])) {
+//    $actionColumnTemplates[] = '{delete}';
+//}
 if (isset($actionColumnTemplates)) {
     $actionColumnTemplateString = implode(' ', $actionColumnTemplates);
 } else {
@@ -50,13 +50,13 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
 
     <div class="clearfix crud-navigation">
 		<?php if(\Yii::$app->user->can('app_setting_create', ['route' => true])): ?>
-            <div class="pull-left">
-                <?= Html::a(
-                    Yii::t('cruds', 'New'), 
-                    ['create'], 
-                    ['class' => 'btn btn-success']) 
-                ?>
-            </div>
+<!--            <div class="pull-left">-->
+<!--                --><?//= Html::a(
+//                    Yii::t('cruds', 'New'),
+//                    ['create'],
+//                    ['class' => 'btn btn-success'])
+//                ?>
+<!--            </div>-->
 		<?php endif; ?>
     </div>
 

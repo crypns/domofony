@@ -24,4 +24,9 @@ class Setting extends BaseSetting
             # custom validation rules
         ]);
     }
+
+    public static function getValue(string $name)
+    {
+        return self::findOne(1)?->$name ?: '';
+    }
 }

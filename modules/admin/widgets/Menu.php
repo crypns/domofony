@@ -60,6 +60,11 @@ class Menu extends Widget
                     'url' => Url::to(['youtube-slider/index']),
                     'can' => Yii::$app->user->can('app_youtube-slider_index'),              
                 ],
+                [
+                    'name' => Yii::t('models', 'Settings'),
+                    'url' => Url::to(['setting/update?id=1']),
+                    'can' => Yii::$app->user->can('app_setting_index'),
+                ],
             ],
         ];
         

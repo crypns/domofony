@@ -38,7 +38,7 @@ $config = array_merge($language, [
         ],
         'telegram' => [
             'class' => 'aki\telegram\Telegram',
-            'botToken' => '5040707194:AAFhxoJaIu3syh6__OmLmghaM3gdzjIeeaw',
+//            'botToken' => '5040707194:AAFhxoJaIu3syh6__OmLmghaM3gdzjIeeaw',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
