@@ -94,7 +94,7 @@ class SiteController extends Controller
 
         $youtubeSlides = YoutubeSlider::find()
             ->orderBy('updated_at DESC')
-            ->limit(3)
+            ->limit(10)
             ->all();
 
         return $this->render('index', [

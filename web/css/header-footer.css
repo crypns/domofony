@@ -149,6 +149,10 @@ footer .block {
           justify-content: space-between;
 }
 
+footer .block a {
+  text-decoration: none;
+}
+
 footer .block .head {
   width: 100%;
   display: -webkit-box;
@@ -161,6 +165,7 @@ footer .block .head {
 }
 
 footer .block .head h6 {
+  margin: 0;
   margin-left: 20px;
 }
 
@@ -224,6 +229,15 @@ footer .block .part .link {
   margin-bottom: 20px;
 }
 
+footer .block .part .link.special {
+  align-items: flex-start;
+}
+
+footer .block .part .link img{
+  height: auto;
+  max-width: 20px;
+}
+
 footer .block .part .link.tels div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -254,6 +268,16 @@ footer .block .part .link a {
             order: 1;
     margin: 20px auto 0;
   }
+}
+
+.part.networks a {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.part.networks a h6{
+  margin: 0;
 }
 
 @media (max-width: 890px) {

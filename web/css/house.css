@@ -211,6 +211,7 @@ section.goods .item .interaction .price {
 section.goods .item .interaction .price h4 {
   text-align: center;
   white-space: nowrap;
+  user-select: none;
 }
 
 section.goods .item .interaction .button {
@@ -232,6 +233,7 @@ section.goods .item .interaction .button button {
 
 section.goods .item .interaction .button button h6 {
   color: #8B1D1E;
+  user-select: none;
 }
 
 section.goods .item .interaction .button button:hover {

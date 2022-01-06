@@ -65,6 +65,8 @@ $(document).ready(function() {
     $(this).addClass('dn');
     $('#header .search .results').slideUp(300);
   });
+
+  if ( $('.special-cart')[0] ) cartChanging()
 });
 
 $(document).mouseup(function (e) {
@@ -75,6 +77,16 @@ $(document).mouseup(function (e) {
         container.slideUp(300);
     }
 });
+
+function cartChanging() {
+  let sum = 0
+  $('.product-item-input').each(function(index, item) {
+    if (+$(item).val()) {
+      sum ++
+    }
+  })
+  $('.special-cart h5 span').text( Number(sum) )
+}
 
 if ($(window).width() < 700) {
   $('#header .tels .nums').addClass('transY0');
@@ -230,6 +242,8 @@ $('.counter .action').click(function(){
 
   //  console.log($(this).siblings('input'));
     // console.log($(this).siblings('input').val());
+
+    if ( $('.special-cart')[0] ) cartChanging()
 });
 
 $('#goods .item .interaction .button button').click(function() {
