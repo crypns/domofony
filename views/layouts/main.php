@@ -13,6 +13,10 @@ use app\widgets\Head;
 
 use app\assets\AppAsset;
 AppAsset::register($this);
+
+if ($this->title === null) {
+    $this->title = Yii::$app->name;
+}
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
