@@ -56,15 +56,6 @@ return [
         'updated_at' => '1990-12-06 00:08:53',
     ],
     'popular-product6' => [
-        'name' => 'Вызывная панель',
-        'product_code' => 'Arny AVP-NG525 (1MPX)',
-        'description' => 'Переговорное устройство для связи с владельцем, охраной.',
-        'image' => 'https://via.placeholder.com/800x800.png/00cc00?text=cats+fugiat',
-        'product_link' => 'Tf4xfmcq4tdH9Bwzu-cXHfeCMsjL5D5X.jpg',
-        'created_at' => '2016-03-31 16:21:30',
-        'updated_at' => '2008-03-13 17:16:50',
-    ],
-    'popular-product7' => [
         'name' => 'Трубка переговорная',
         'product_code' => 'Cyfral SMART-U (GREY WHITE)',
         'description' => 'Аудиотрубка Cyfral SMART-U – это составная часть домофонных систем.',
@@ -73,7 +64,7 @@ return [
         'created_at' => '1988-12-07 06:33:54',
         'updated_at' => '1980-07-20 04:05:55',
     ],
-    'popular-product8' => [
+    'popular-product7' => [
         'name' => 'Беспроводной WI-FI видеозвонок',
         'product_code' => 'DAHUA DHI-DB11',
         'description' => 'Вызывная панель, которая позволяет видеть посетителей и общаться с ними даже если вас нет дома.',
@@ -82,7 +73,7 @@ return [
         'created_at' => '1994-03-09 10:42:55',
         'updated_at' => '1998-12-31 04:14:10',
     ],
-    'popular-product9' => [
+    'popular-product8' => [
         'name' => 'Домофон',
         'product_code' => 'Sonik 10',
         'description' => 'Теперь у вас будет возможность придать чёрному Sonik 10 эксклюзивный вид, установив уникальную чёрную переднюю панель.',

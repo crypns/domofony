@@ -128,5 +128,4 @@ class OrderController extends Controller
     {
         return $this->render('/site/success');
     }
-
 }
