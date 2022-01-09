@@ -16,12 +16,17 @@ db-rights:
 		sudo chmod 777 -R database/; \
 	fi;
 
-rights: db-rights
+vendor-rights:
+	if [ -d vendor/ ]; \
+	then \
+		sudo chmod 777 -R vendor/; \
+	fi;
+
+rights: db-rights vendor-rights
 	sudo chmod 777 -R web/
 	sudo chmod 777 -R runtime/
 
 	sudo chmod 777 -R migrations/
-	sudo chmod 777 -R vendor/
 
 up:
 	docker-compose up -d
