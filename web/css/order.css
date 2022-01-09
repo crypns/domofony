@@ -37,6 +37,7 @@
 
 .title h6 {
   margin-left: 13px;
+  margin-bottom: 0;
 }
 
 section.order {
@@ -472,6 +473,12 @@ section.success a:hover h5 {
   }
 }
 
+@media (max-width: 700px) {
+  .input-list .row-input {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 580px) {
   section.payment form .fields .input {
     width: 100%;
@@ -576,4 +583,46 @@ section.success a:hover h5 {
   section.order .item .cont .counter {
     width: 100%;
   }
+}
+
+.input-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-list .row-input {
+  display: flex;
+}
+
+.input-list .row-input .row-input-item {
+  max-width: 300px;
+  min-width: 300px;
+  margin: 0 10px 10px 0;
+}
+
+.input-list .row-input .row-input-item .iti {
+  width: 100%;
+}
+
+.input-list .row-input .row-input-item .iti input{
+  padding-left: 50px;
+}
+
+.input-list .row-input .row-input-item input{
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.input-list .row-input .row-input-item.special {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-list .row-input .row-input-item.special input{
+  width: 48%;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 2px;
 }

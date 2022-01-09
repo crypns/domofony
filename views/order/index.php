@@ -105,89 +105,98 @@ use app\models\Cart;
         <form action="">
             <div class="fields">
                 <h5>Інформація про покупця</h5>
-                <div class="input">
-                    <?= $form->field($cartModel, 'first_name')
-                        ->textInput([
-                            'class' => null,
-                            'maxlength' => true,
-                            'placeholder' => 'Ім’я'
-                        ])->label('name') ?>
-                </div>
+                <div class="input-list">
 
-                <?= $form->field($cartModel, 'last_name')
-                    ->textInput([
-                        'class' => null,
-                        'maxlength' => true,
-                        'placeholder' => 'Прізвище'
-                    ])->label('name')
-                ?>
+                  <div class="row-input">
+                    <div class="row-input-item">
+                      <?= $form->field($cartModel, 'first_name')
+                          ->textInput([
+                              'class' => null,
+                              'maxlength' => true,
+                              'placeholder' => 'Ім’я'
+                          ])->label('name') ?>
+                    </div>
 
-                <div class="input">
-                    <?= $form->field($cartModel, 'phone_number')->widget(\borales\extensions\phoneInput\PhoneInput::className(), [
-                        'jsOptions' => [
-                            'class' => null,
-                            'allowExtensions' => true,
-                            'onlyCountries' => ['ua'],
-                            'nationalMode' => true,
-                            'placeholder' => '(_ _ _) _ _ _ _ _ _ _'
-                        ]
-                    ]); ?>
-                </div>
-                <div class="input">
-                    <?= $form->field($cartModel, 'email')
-                        ->textInput([
-                            'class' => null,
-                            'maxlength' => true,
-                            'placeholder' => 'Електронна пошта'
-                        ])
-                    ?>
-                </div>
-                <div class="input">
-                    <?= $form->field($cartModel, 'street')
-                        ->textInput([
-                            'class' => null,
-                            'maxlength' => true,
-                            'placeholder' => 'Вулиця'
-                        ])
-                    ?>
-                </div>
-                <div class="input w25">
-                    <?= $form->field($cartModel, 'apartment')
-                        ->textInput([
-                            'class' => null,
-                            'maxlength' => true,
-                            'placeholder' => 'Будинок'
-                        ])
-                    ?>
-                </div>
-                <div class="input w25">
-                    <?= $form->field($cartModel, 'house')
-                        ->textInput([
-                            'class' => null,
-                            'maxlength' => true,
-                            'placeholder' => 'Квартира'
-                        ])
-                    ?>
-                </div>
-                <div class="input w25">
-                    <?= $form->field($cartModel, 'entrance')
-                        ->textInput([
-                            'class' => null,
-                            'maxlength' => true,
-                            'placeholder' => 'Під’їзд'
-                        ])
-                    ?>
-                </div>
-                <div class="input w25">
-                    <?= $form->field($cartModel, 'floor')
-                        ->textInput([
-                                'class' => null,
-                                'maxlength' => true,
-                                'placeholder' => 'Поверх']
-                        );
-                    ?>
-                </div>
+                    <div class="row-input-item">
+                      <?= $form->field($cartModel, 'last_name')
+                          ->textInput([
+                              'class' => null,
+                              'maxlength' => true,
+                              'placeholder' => 'Прізвище'
+                          ])->label('name') ?>
+                    </div>
+                  </div>
 
+                  <div class="row-input">
+                    <div class="row-input-item">
+                      <?= $form->field($cartModel, 'phone_number')->widget(\borales\extensions\phoneInput\PhoneInput::className(), [
+                          'jsOptions' => [
+                              'class' => 'special',
+                              'allowExtensions' => true,
+                              'onlyCountries' => ['ua'],
+                              'nationalMode' => true,
+                              'placeholder' => '(_ _ _) _ _ _ _ _ _ _'
+                          ]
+                      ]); ?>
+                    </div>
+                    <div class="row-input-item">
+                      <?= $form->field($cartModel, 'email')
+                          ->textInput([
+                              'class' => null,
+                              'maxlength' => true,
+                              'placeholder' => 'Електронна пошта'
+                          ])
+                      ?>
+                    </div>
+                  </div>
+
+                  <div class="row-input">
+                    <div class="row-input-item">
+                      <?= $form->field($cartModel, 'street')
+                          ->textInput([
+                              'class' => null,
+                              'maxlength' => true,
+                              'placeholder' => 'Вулиця'
+                          ])
+                      ?>
+                    </div>
+                    <div class="row-input-item special">
+                      <?= $form->field($cartModel, 'apartment')
+                          ->textInput([
+                              'class' => null,
+                              'maxlength' => true,
+                              'placeholder' => 'Будинок'
+                          ])
+                      ?>
+                      <?= $form->field($cartModel, 'house')
+                          ->textInput([
+                              'class' => null,
+                              'maxlength' => true,
+                              'placeholder' => 'Квартира'
+                          ])
+                      ?>
+                    </div>
+                  </div>
+
+                  <div class="row-input">
+                    <div class="row-input-item special">
+                      <?= $form->field($cartModel, 'apartment')
+                          ->textInput([
+                              'class' => null,
+                              'maxlength' => true,
+                              'placeholder' => 'Будинок'
+                          ])
+                      ?>
+                      <?= $form->field($cartModel, 'house')
+                          ->textInput([
+                              'class' => null,
+                              'maxlength' => true,
+                              'placeholder' => 'Квартира'
+                          ])
+                      ?>
+                    </div>
+                  </div>
+                </div>
             </div>
 
             <div class="delivery" id="delivery">
@@ -200,18 +209,23 @@ use app\models\Cart;
                             Cart::DELIVERY_COUR => 'Кур’єрам',
                         ])->label(true) ?>
                     <span>
-              <div>
+              <!-- <div>
                   <img src="<?= Yii::getAlias('@web/img/order/newPost.svg') ?>" alt="">
-              </div>
+              </div> -->
                         <!--              <p class="p1">Нова Пошта (у відділення)</p>-->
-            </span>
+                    </span>
                 </label>
-                <div class="input" id="postNumber">
-                    <?= $form->field($cartModel, 'code_post')
-                        ->textInput([
-                            'placeholder' => 'code_post',
-                            'class' => null,
-                            'maxlength' => true]) ?>
+
+                <div class="input-list">
+                    <div class="row-input">
+                      <div class="row-input-item special">
+                        <?= $form->field($cartModel, 'code_post')
+                            ->textInput([
+                                'placeholder' => 'code_post',
+                                'class' => null,
+                                'maxlength' => true]) ?>
+                      </div>
+                    </div>
                 </div>
             </div>
 
