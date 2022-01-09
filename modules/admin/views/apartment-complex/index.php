@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\helpers\StringHelper;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
@@ -98,7 +99,13 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                 ],
 				'name',
 				'address',
-				'description',
+                [
+                    'attribute' => 'description',
+                    'value' => function ($model, $key, $index, $column) {
+                        $attributeName = $column->attribute;
+                        return StringHelper::truncate($model->$attributeName, 100);
+                    }
+                ],
             ]
         ]); ?>
         <?php Pjax::end(); ?>

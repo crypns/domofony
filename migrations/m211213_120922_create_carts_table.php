@@ -21,7 +21,7 @@ class m211213_120922_create_carts_table extends Migration
             'email' => $this->string()->notNull()->comment('Электронная почта'),
             'address' => $this->string()->notNull()->comment('Адрес'),
             'delivery' => $this->string()->notNull()->comment('Способ доставки'),
-            'general_cost' => $this->integer()->notNull()->comment('Общая стоимость товара'),
+            'general_cost' => $this->money()->notNull()->comment('Общая стоимость товара'),
             'general_count' => $this->integer()->notNull()->comment('Общее количество товара'),
             'status_order' => $this->string()->notNull()->comment('Статус заказа'),
         ], $timestampColumns));

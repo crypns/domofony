@@ -98,7 +98,13 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                 ],
 				'name',
 				'product_code',
-				'description',
+				[
+                    'attribute' => 'description',
+                    'value' => function ($model, $key, $index, $column) {
+                        $attributeName = $column->attribute;
+                        return StringHelper::truncate($model->$attributeName, 100);
+                    }
+                ],
                 [
                     'class' => app\custom\ImgColumn::className(),
                     'attribute' => 'image',
@@ -109,7 +115,7 @@ $actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTempla
                     'format' => 'raw',
                     'value' => function($model, $key, $index, $column) {
                         $attributeName = $column->attribute;
-                        return Html::a(StringHelper::truncate($model->$attributeName,40), $model->$attributeName, ['target' => '_blank']);
+                        return Html::a(StringHelper::truncate($model->$attributeName, 40), $model->$attributeName, ['target' => '_blank']);
                     }
                 ],
             ]

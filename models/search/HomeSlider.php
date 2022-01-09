@@ -78,8 +78,13 @@ class HomeSlider extends HomeSliderModel
         $query->andFilterWhere(['ilike', 'home_sliders.name', $this->name])
             ->andFilterWhere(['ilike', 'home_sliders.description', $this->description])
             ->andFilterWhere(['ilike', 'image', $this->image])
-            ->andFilterWhere(['ilike', 'product_link', $this->product_link])
-            ->andFilterWhere(['ilike', 'apartment_complexes.name', $this->complex_name]);
+            ->andFilterWhere(['ilike', 'product_link', $this->product_link]);
+
+        if (preg_match("|$this->complex_name|ui", 'На главной') && $this->complex_name) {
+            $query->andWhere(['apartment_complexes.name' => null]);
+        } else {
+            $query->andFilterWhere(['ilike', 'apartment_complexes.name', $this->complex_name]);
+        }
 
         return $dataProvider;
     }

@@ -54,7 +54,8 @@ abstract class ApartmentComplex extends \app\custom\ActiveRecord
     {
         return [
             [['name', 'address', 'description'], 'required'],
-            [['name', 'address', 'description'], 'string', 'max' => 255],
+            [['name', 'address'], 'string', 'max' => 255],
+            [['description'], 'string', 'max' => 1024],
             [['name'], 'unique']
         ];
     }
