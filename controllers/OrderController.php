@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\handlers\LiqpayHandler;
 use app\models\ApartmentComplex;
 use app\models\CartProduct;
 use app\models\ComplexProduct;
@@ -15,19 +16,9 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-use app\models\default\LoginForm;
-use app\models\default\ContactForm;
-use app\models\default\SignupForm;
-use app\models\default\VerifyEmailForm;
-use app\models\default\PasswordResetRequestForm;
-use app\models\default\ResendVerificationEmailForm;
-use app\models\default\ResetPasswordForm;
 use app\models\Cart;
-use aki\telegram\Telegram;
-use aki\telegram\base\Command;
-use dicr\liqpay\LiqPayModule;
 use app\models\Setting;
-
+use app\handlers\TelegramHandler;
 
 class OrderController extends Controller
 {
@@ -83,36 +74,9 @@ class OrderController extends Controller
                     $cartProduct->save();
                 }
 
-                /** @var LiqPayModule $liqpay получаем модуль */
-                $liqpay = Yii::$app->getModule('liqpay');
+                TelegramHandler::sendMessageCartFormed($cartModel);
 
-                // создаем запрос платежа
-                $request = $liqpay->checkoutRequest([
-                    'returnUrl' => Yii::$app->urlManager->createAbsoluteUrl('/site/success'),
-                    'orderId' => $cartModel->id,
-                    'amount' => $cartModel->general_cost,
-                    'description' => 'Оплата заказа №' . $cartModel->id,
-                ]);
-
-                // переадресуем клиента на страницу оплаты
-                $request->redirect();
-
-                $container = new \yii\di\Container();
-                $container->setSingleton('telegram', [
-                    'class' => 'aki\telegram\Telegram',
-                    'botToken' => '5040707194:AAFhxoJaIu3syh6__OmLmghaM3gdzjIeeaw',
-                ]);
-
-                Yii::$app->telegram->sendMessage([
-                    Yii::$app->telegram->botToken = Setting::getValue('bot_token'),
-                    'chat_id' => Setting::getValue('chat_id'),
-                    'text' => 'Номер заказа: ' . $cartModel->id . "\r\n"
-                        . 'Имя: ' . $cartModel->full_name . "\r\n"
-                        . 'Номер телефона: ' . $cartModel->phone_number . "\r\n"
-                        . 'Email: ' . $cartModel->email . "\r\n"
-                        . 'Общая стоимость заказа: ' . Yii::$app->formatter->asCurrency($cartModel->general_cost) . "\r\n"
-                        . Yii::$app->urlManager->createAbsoluteUrl(['admin/cart/view', 'id' => $cartModel->id]),
-                ]);
+                return LiqpayHandler::createPayment($cartModel);
             }
         }
 

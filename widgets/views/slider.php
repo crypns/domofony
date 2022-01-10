@@ -8,6 +8,7 @@ use yii\bootstrap4\Html;
 /* @var $layoutClass string */
 ?>
 
+<?php if ($models): ?>
 <section class="<?= $layoutClass ?>" id="banner">
     <div class="block">
         <div class="slider">
@@ -30,3 +31,4 @@ use yii\bootstrap4\Html;
         </div>
     </div>
 </section>
+<?php endif ?>
