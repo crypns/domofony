@@ -74,7 +74,7 @@ use app\models\Cart;
                         </div>
                     </div>
                     <div class="price">
-                        <h6><?= $cartProduct->complexProduct->cost ?></h6>
+                        <h6><?= Yii::$app->formatter->asCurrency($cartProduct->complexProduct->cost) ?></h6>
                     </div>
                     <div class="delete remove-product-button" data-cost="<?= $cartProduct->complexProduct->cost ?>">
                         <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
