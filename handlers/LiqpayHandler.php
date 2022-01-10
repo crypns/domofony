@@ -16,7 +16,7 @@ class LiqpayHandler {
         $liqpay = Yii::$app->getModule('liqpay');
         $liqpay->publicKey = Setting::getValue('public_key');
         $liqpay->privateKey = Setting::getValue('private_key');
-        dd($liqpay);
+
         $liqpay->
         // создаем запрос платежа
         $request = $liqpay->checkoutRequest([

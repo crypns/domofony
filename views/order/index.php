@@ -110,6 +110,8 @@ use app\models\Cart;
             </div>
             <h6>Ваше замовлення</h6>
         </div>
+
+        <?php if ($cartModel->general_count != 0):?>
         <form action="">
             <div class="fields">
                 <h5>Інформація про покупця</h5>
@@ -261,4 +263,5 @@ use app\models\Cart;
                 </div>
             </div>
     </div>
+        <?php endif; ?>
 </section>
