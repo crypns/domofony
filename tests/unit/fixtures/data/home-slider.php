@@ -4,7 +4,7 @@ return [
     'home-slider0' => [
         'name' => 'Беспроводной видеодомофон Arny',
         'description' => 'AVP-1000 WIFI',
-        'image' => 'qthUCPDPMXLm6V-ppCUd4U6pyD_vShhj.jpg',
+        'image' => 'S1VM16R4tdofhGAigTkV7zBmgu0iO2Yg.png',
         'product_link' => 'https://www.domofony.com.ua/besprovodnyj-domofon-arny-avp-1000-wifi.html',
         'complex_id' => null,
         'created_at' => '2011-03-23 17:16:45',
@@ -13,7 +13,7 @@ return [
     'home-slider1' => [
         'name' => 'Беспроводной видеодомофон Slinex',
         'description' => 'RD-30',
-        'image' => 'wMauWVQtF7857RDH7p4WvIFgYOJfISQn.png',
+        'image' => '4NvK5295WxPpYB-SFj4HN3AjEjIe6Opp.jpg',
         'product_link' => 'https://www.domofony.com.ua/slinex-rd-30.html',
         'complex_id' => null,
         'created_at' => '1984-08-02 02:10:32',
