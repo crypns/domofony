@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'js/slick.min.js',
         'js/scripts.js',
         'js/rebuild.js',
+        'js/cart.js',
     ];
 
 
