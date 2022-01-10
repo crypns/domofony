@@ -74,7 +74,7 @@ use app\models\Cart;
                         </div>
                     </div>
                     <div class="price">
-                        <h6><?= $cartProduct->complexProduct->cost ?></h6>
+                        <h6><?= Yii::$app->formatter->asCurrency($cartProduct->complexProduct->cost) ?></h6>
                     </div>
                     <div class="delete remove-product-button" data-cost="<?= $cartProduct->complexProduct->cost ?>">
                         <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +90,11 @@ use app\models\Cart;
         <div class="total">
             <h5>Разом:</h5>
             <h5 class="quantity total-products-count"><?= $cartModel->general_count ?></h5>
-            <h5><span class="total-products-price"><?= $cartModel->general_cost ?></span> ₴</h5>
+            <h5>
+                <span class="total-products-price">
+                    <?= Yii::$app->formatter->asCurrency($cartModel->general_cost) ?>
+                </span>
+            </h5>
         </div>
     </div>
 
@@ -165,37 +169,38 @@ use app\models\Cart;
                       ?>
                     </div>
                     <div class="row-input-item special">
+                        <?= $form->field($cartModel, 'house')
+                            ->textInput([
+                                'class' => null,
+                                'maxlength' => true,
+                                'placeholder' => 'Будинок'
+                            ])
+                        ?>
                       <?= $form->field($cartModel, 'apartment')
-                          ->textInput([
-                              'class' => null,
-                              'maxlength' => true,
-                              'placeholder' => 'Будинок'
-                          ])
-                      ?>
-                      <?= $form->field($cartModel, 'house')
                           ->textInput([
                               'class' => null,
                               'maxlength' => true,
                               'placeholder' => 'Квартира'
                           ])
                       ?>
+
                     </div>
                   </div>
 
                   <div class="row-input">
                     <div class="row-input-item special">
-                      <?= $form->field($cartModel, 'apartment')
+                      <?= $form->field($cartModel, 'entrance')
                           ->textInput([
                               'class' => null,
                               'maxlength' => true,
-                              'placeholder' => 'Будинок'
+                              'placeholder' => "Під'їзд"
                           ])
                       ?>
-                      <?= $form->field($cartModel, 'house')
+                      <?= $form->field($cartModel, 'floor')
                           ->textInput([
                               'class' => null,
                               'maxlength' => true,
-                              'placeholder' => 'Квартира'
+                              'placeholder' => 'Поверх'
                           ])
                       ?>
                     </div>

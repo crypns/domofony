@@ -102,7 +102,7 @@ use yii\helpers\Url;
             </div>
           </div>
           <div class="price">
-            <h4 data-price="<?= $complexProduct->cost ?>"><?= $complexProduct->cost ?> ₴</h4>
+            <h4 data-price="<?= $complexProduct->cost ?>"><?= Yii::$app->formatter->asCurrency($complexProduct->cost) ?></h4>
           </div>
           <div class="button">
             <button data-id="<?= $complexProduct->id ?>" type="button">
