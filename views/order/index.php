@@ -169,37 +169,38 @@ use app\models\Cart;
                       ?>
                     </div>
                     <div class="row-input-item special">
+                        <?= $form->field($cartModel, 'house')
+                            ->textInput([
+                                'class' => null,
+                                'maxlength' => true,
+                                'placeholder' => 'Будинок'
+                            ])
+                        ?>
                       <?= $form->field($cartModel, 'apartment')
-                          ->textInput([
-                              'class' => null,
-                              'maxlength' => true,
-                              'placeholder' => 'Будинок'
-                          ])
-                      ?>
-                      <?= $form->field($cartModel, 'house')
                           ->textInput([
                               'class' => null,
                               'maxlength' => true,
                               'placeholder' => 'Квартира'
                           ])
                       ?>
+
                     </div>
                   </div>
 
                   <div class="row-input">
                     <div class="row-input-item special">
-                      <?= $form->field($cartModel, 'apartment')
+                      <?= $form->field($cartModel, 'entrance')
                           ->textInput([
                               'class' => null,
                               'maxlength' => true,
-                              'placeholder' => 'Будинок'
+                              'placeholder' => "Під'їзд"
                           ])
                       ?>
-                      <?= $form->field($cartModel, 'house')
+                      <?= $form->field($cartModel, 'floor')
                           ->textInput([
                               'class' => null,
                               'maxlength' => true,
-                              'placeholder' => 'Квартира'
+                              'placeholder' => 'Поверх'
                           ])
                       ?>
                     </div>
