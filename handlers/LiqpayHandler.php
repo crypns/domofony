@@ -17,7 +17,7 @@ class LiqpayHandler {
         $liqpay->publicKey = Setting::getValue('public_key');
         $liqpay->privateKey = Setting::getValue('private_key');
 
-        $liqpay->
+
         // создаем запрос платежа
         $request = $liqpay->checkoutRequest([
             'returnUrl' => Yii::$app->urlManager->createAbsoluteUrl('/site/index'),

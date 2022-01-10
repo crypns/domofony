@@ -389,6 +389,7 @@ footer .block .part .link a {
 
 header.active-header {
   justify-content: center;
+  background: none;
 }
 
 header.active-header .tels,

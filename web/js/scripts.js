@@ -277,15 +277,18 @@ $('#delivery label').click(function() {
 });
 
 $('#order .item .delete').click(function() {
-  // Change values before delete
-  let count = $(this).closest('.item').find('.special').val()
-  let { cost } = $(this).data()
 
-  $('.total .price span').text( +$('.total .price span').text() - (cost * count) )
-  $('.quantity').text( +$('.quantity').text() - count )
+  if ($(this).data('type') === 'order') {
+    // Change values before delete
+    let count = $(this).closest('.item').find('.special').val()
+    let { cost } = $(this).data()
 
-  // Delete from DOM
-  $(this).closest('.item').remove()
+    $('.total .price span').text( +$('.total .price span').text() - (cost * count) )
+    $('.quantity').text( +$('.quantity').text() - count )
+
+    // Delete from DOM
+    $(this).closest('.item').remove()
+  }
 });
 
 
@@ -299,3 +302,20 @@ $(document).keydown(function(event) {
     }
   }
 });
+
+$("div.radio:eq(0) input").change( function(){
+   if( $(this).is(':checked') ) {
+      $('.post-input').addClass('active')
+    }
+})
+
+$("div.radio:eq(1) input").change( function(){
+   if( $(this).is(':checked') ) {
+      $('.post-input').removeClass('active')
+    }
+})
+
+$('.send-order').on('click', function(event) {
+  event.preventDefault()
+  $('#Cart').submit()
+})

@@ -76,7 +76,7 @@ use app\models\Cart;
                     <div class="price">
                         <h6><?= Yii::$app->formatter->asCurrency($cartProduct->complexProduct->cost) ?></h6>
                     </div>
-                    <div class="delete remove-product-button" data-cost="<?= $cartProduct->complexProduct->cost ?>">
+                    <div class="delete remove-product-button" data-type-"order" data-cost="<?= $cartProduct->complexProduct->cost ?>">
                         <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15 3V15.5C15 16.8807 13.8807 18 12.5 18H3.5C2.11929 18 1 16.8807 1 15.5V3H0.5C0.223858 3 0 2.77614 0 2.5C0 2.22386 0.223858 2 0.5 2H5V1.5C5 0.671573 5.67157 0 6.5 0H9.5C10.3284 0 11 0.671573 11 1.5V2H15.5C15.7761 2 16 2.22386 16 2.5C16 2.77614 15.7761 3 15.5 3H15ZM2 3V15.5C2 16.3284 2.67157 17 3.5 17H12.5C13.3284 17 14 16.3284 14 15.5V3H2ZM10 2V1.5C10 1.22386 9.77614 1 9.5 1H6.5C6.22386 1 6 1.22386 6 1.5V2H10ZM10 6.5C10 6.22386 10.2239 6 10.5 6C10.7761 6 11 6.22386 11 6.5V13.5C11 13.7761 10.7761 14 10.5 14C10.2239 14 10 13.7761 10 13.5V6.5ZM5 6.5C5 6.22386 5.22386 6 5.5 6C5.77614 6 6 6.22386 6 6.5V13.5C6 13.7761 5.77614 14 5.5 14C5.22386 14 5 13.7761 5 13.5V6.5Z"
                                   fill=""/>
@@ -92,8 +92,9 @@ use app\models\Cart;
             <h5 class="quantity total-products-count"><?= $cartModel->general_count ?></h5>
             <h5>
                 <span class="total-products-price">
-                    <?= Yii::$app->formatter->asCurrency($cartModel->general_cost) ?>
+                    <?= $cartModel->general_cost ?>
                 </span>
+                ₴
             </h5>
         </div>
     </div>
@@ -218,7 +219,7 @@ use app\models\Cart;
                         ->radioList([
                             Cart::DELIVERY_NOVA => 'Нова Пошта (у відділення)',
                             Cart::DELIVERY_COUR => 'Кур’єрам',
-                        ])->label(true) ?>
+                        ], array('class' => 'i-checks'))->label(true) ?>
                     <span>
               <!-- <div>
                   <img src="<?= Yii::getAlias('@web/img/order/newPost.svg') ?>" alt="">
@@ -233,16 +234,15 @@ use app\models\Cart;
                         <?= $form->field($cartModel, 'code_post')
                             ->textInput([
                                 'placeholder' => 'code_post',
-                                'class' => null,
+                                'class' => 'post-input',
                                 'maxlength' => true]) ?>
                       </div>
                     </div>
                 </div>
             </div>
 
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
             <!--        </form>-->
-            <div class="online">
+            <div class="online send-order">
                 <a href="#">
                     <h5>Оплатити замовлення онлайн</h5>
                 </a>
