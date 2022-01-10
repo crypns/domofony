@@ -71,7 +71,7 @@ class Product extends ProductModel
 
         $query->joinWith('category');
 
-        $query->andFilterWhere(['ilike', 'name', $this->name])
+        $query->andFilterWhere(['ilike', 'products.name', $this->name])
             ->andFilterWhere(['ilike', 'image', $this->image])
             ->andFilterWhere(['ilike', 'categories.name', $this->category_name]);
 

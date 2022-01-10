@@ -62,7 +62,7 @@ $config = array_merge($language, [
         'db' => $db,
         'urlManager' => [
             'class' => 'codemix\localeurls\UrlManager',
-            'languages' => ['ru' => 'ru-RU'],
+            // 'languages' => ['ru' => 'ru-RU'],
 
             'enablePrettyUrl' => true,
             'showScriptName' => false,

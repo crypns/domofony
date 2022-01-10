@@ -67,15 +67,18 @@ class CartController extends \app\custom\BaseApiController
 
     public function actionAddToCart()
     {
-        $data = Yii::$app->request->post();
-        $session = Yii::$app->session;
+        if ($post = Yii::$app->request->post()) {
+            $session = Yii::$app->session;
 
-        $orders = $session->get('orders');
-        $orders[$data['product_id']] =  $data['count'];
+            $orders = $session->get('orders');
+            $orders[$post['product_id']] =  $post['count'];
 
-        $session->set('orders', $orders);
+            $session->set('orders', $orders);
 
-        return count($orders);
+            return count($orders);
+        }
+
+        throw new \yii\web\BadRequestHttpException('Please, provide post request body');
     }
 
     /**

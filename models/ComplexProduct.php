@@ -19,7 +19,7 @@ class ComplexProduct extends BaseComplexProduct
         }
         Yii::$app->session->setFlash(
             'success',
-            'Товар и связанные с ним данные были удалены успешно.'
+            "Товар та пов'язані з ним дані були видалені успішно."
         );
         return $flag && parent::beforeDelete();
     }
@@ -40,7 +40,7 @@ class ComplexProduct extends BaseComplexProduct
     public function rules()
     {
         return array_merge(parent::rules(), [
-            # custom validation rules
+            ['product_id', 'unique', 'targetAttribute' => ['product_id', 'complex_id'], 'message' => 'Даний ЖК вже має обраний товар'],
         ]);
     }
 }

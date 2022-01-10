@@ -16,7 +16,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $email
  * @property string $address
  * @property string $delivery
- * @property integer $general_cost
+ * @property string $general_cost
  * @property integer $general_count
  * @property string $status_order
  * @property string $created_at
@@ -58,8 +58,9 @@ abstract class Cart extends \app\custom\ActiveRecord
     {
         return [
             [['full_name', 'phone_number', 'email', 'address', 'delivery', 'general_cost', 'general_count', 'status_order'], 'required'],
-            [['general_cost', 'general_count'], 'default', 'value' => null],
-            [['general_cost', 'general_count'], 'integer'],
+            [['general_cost'], 'number'],
+            [['general_count'], 'default', 'value' => null],
+            [['general_count'], 'integer'],
             [['full_name', 'phone_number', 'email', 'address', 'delivery', 'status_order'], 'string', 'max' => 255]
         ];
     }

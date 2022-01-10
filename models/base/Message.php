@@ -38,7 +38,6 @@ abstract class Message extends \app\custom\ActiveRecord
             [['source_id'], 'integer'],
             [['translation'], 'string'],
             [['language'], 'string', 'max' => 255],
-            [['translation'], 'unique'],
             [['source_id'], 'exist', 'skipOnError' => true, 'targetClass' => \app\models\SourceMessage::className(), 'targetAttribute' => ['source_id' => 'id']]
         ];
     }
