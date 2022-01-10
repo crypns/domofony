@@ -334,7 +334,7 @@ section.payment form .delivery .input input::placeholder {
 }
 
 section.payment .online {
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
 section.payment .online a {
@@ -611,8 +611,10 @@ section.success a:hover h5 {
 .input-list .row-input .row-input-item input{
   width: 100%;
   border: 1px solid #ccc;
-  padding: 5px;
+  padding: 10px;
   border-radius: 2px;
+  font-size: 19px;
+  min-height: 52px;
 }
 
 .input-list .row-input .row-input-item.special {
@@ -625,4 +627,12 @@ section.success a:hover h5 {
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 2px;
+}
+
+.post-input {
+  display: none
+}
+
+.post-input.active {
+  display: flex;
 }

@@ -18,8 +18,8 @@ $('body').on('click', '.price-modify', function(event) {
 })
 
 $('body').on('click', '.remove-product-button', function(event) {
-  $(this).closest('.global-product-item').remove()
-  productsInfoUpdate()
+  $(this).closest('.global-product-item').remove();
+  productsInfoUpdate();
 })
 
 
@@ -35,5 +35,10 @@ function productsInfoUpdate() {
 
   if ($('.total-products-count')[0]) {
     $('.total-products-count').text(count)
+  }
+
+  if (!sum && !count && !$('.input-for-product')[0]) {
+    // Delete order form
+    $('.payment').remove()
   }
 }
