@@ -199,35 +199,35 @@ $('.counter .action').click(function(){
         qty = 0;
     }
 
-    if (type === 'orders') {
-      let count = $(this).closest('.counter').find('.special').val()
-
-      if( $(this).attr('data-operation') === 'add' ){
-        if(count < max) {
-          count++;
-        }
-
-        $('.total .price span').text( +$('.total .price span').text() + cost )
-      } else {
-          count--;
-          $('.total .price span').text( +$('.total .price span').text() - cost )
-      }
-
-      if (count < 0) {
-          count = 0;
-          $('.total .price span').text(0)
-      }
-
-      $(this).closest('.counter').find('.special').val(count)
-
-      let sum = 0
-      $('.order .item .special').each((index, item) => {
-        sum += +$(item).val()
-      })
-
-      // Change global quantity
-      $('.quantity').text(sum)
-    }
+    // if (type === 'orders') {
+    //   let count = $(this).closest('.counter').find('.special').val()
+    //
+    //   if( $(this).attr('data-operation') === 'add' ){
+    //     if(count < max) {
+    //       count++;
+    //     }
+    //
+    //     $('.total .price span').text( +$('.total .price span').text() + cost )
+    //   } else {
+    //       count--;
+    //       $('.total .price span').text( +$('.total .price span').text() - cost )
+    //   }
+    //
+    //   if (count < 0) {
+    //       count = 0;
+    //       $('.total .price span').text(0)
+    //   }
+    //
+    //   $(this).closest('.counter').find('.special').val(count)
+    //
+    //   let sum = 0
+    //   $('.order .item .special').each((index, item) => {
+    //     sum += +$(item).val()
+    //   })
+    //
+    //   // Change global quantity
+    //   $('.quantity').text(sum)
+    // }
 
     if (qty > 0) {
     	$(this).closest('.interaction').find('button').removeClass('dn');
@@ -238,12 +238,14 @@ $('.counter .action').click(function(){
 
     //put new value into input box id-'qty'
     //$(this).siblings('input').val(qty);
-    $(this).siblings('input').val(qty);
+    if (type !== 'orders') {
+        $(this).siblings('input').val(qty);
+    }
 
   //  console.log($(this).siblings('input'));
     // console.log($(this).siblings('input').val());
 
-    if ( $('.special-cart')[0] ) cartChanging()
+    if ( $('.special-cart')[0] && type !== 'orders' ) cartChanging()
 });
 
 $('#goods .item .interaction .button button').click(function() {
