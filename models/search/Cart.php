@@ -50,7 +50,8 @@ class Cart extends CartModel
     */
     public function search($params)
     {
-        $query = CartModel::find();
+        $query = CartModel::find()
+            ->orderBy(['updated_at' => SORT_DESC]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
