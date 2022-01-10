@@ -109,7 +109,7 @@ use app\models\Cart;
             <div>
                 <img src="<?= Yii::getAlias('@web/img/order/payment.svg') ?>" alt="">
             </div>
-            <h6>Ваше замовлення</h6>
+            <h6>Оплата</h6>
         </div>
 
         <?php if ($cartModel->general_count != 0):?>
@@ -218,7 +218,7 @@ use app\models\Cart;
                     <?= $form->field($cartModel, 'delivery')
                         ->radioList([
                             Cart::DELIVERY_NOVA => 'Нова Пошта (у відділення)',
-                            Cart::DELIVERY_COUR => 'Кур’єрам',
+                            Cart::DELIVERY_COUR => 'Кур’єр по Києву (в поштову скриньку або консьєржу)',
                         ], array('class' => 'i-checks'))->label(true) ?>
                     <span>
               <!-- <div>
@@ -233,7 +233,7 @@ use app\models\Cart;
                       <div class="row-input-item special">
                         <?= $form->field($cartModel, 'code_post')
                             ->textInput([
-                                'placeholder' => 'code_post',
+                                'placeholder' => 'Номер відділення',
                                 'class' => 'post-input',
                                 'maxlength' => true]) ?>
                       </div>
@@ -265,3 +265,92 @@ use app\models\Cart;
     </div>
         <?php endif; ?>
 </section>
+
+
+<section class="payment">
+    <div class="block">
+        <div class="title">
+            <div>
+                <img src="img/order/payment.svg" alt="">
+            </div>
+            <h6>Ваше замовлення</h6>
+        </div>
+        <form action="">
+            <div class="fields">
+                <h5>Інформація про покупця</h5>
+                <div class="input">
+                    <input type="text" placeholder="Ім’я">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Прізвище">
+                </div>
+                <div class="input">
+                    <h6>+38</h6>
+                    <input type="text" placeholder="(_ _ _) _ _ _ _ _ _ _">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Електронна пошта">
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Вулиця">
+                </div>
+                <div class="input w25">
+                    <input type="text" placeholder="Будинок">
+                </div>
+                <div class="input w25">
+                    <input type="text" placeholder="Квартира">
+                </div>
+                <div class="input w25">
+                    <input type="text" placeholder="Під’їзд">
+                </div>
+                <div class="input w25">
+                    <input type="text" placeholder="Поверх">
+                </div>
+            </div>
+            <div class="delivery" id="delivery">
+                <h5>Доставка</h5>
+                <label class="radio">
+                    <input type="radio" name="delivery" id="newPost">
+                    <span>
+              <div>
+                <img src="img/order/newPost.svg" alt="">
+              </div>
+              <p class="p1">Нова Пошта (у відділення)</p>
+            </span>
+                </label>
+                <div class="input" id="postNumber">
+                    <input type="text" placeholder="Номер відділення">
+                </div>
+                <label class="radio">
+                    <input type="radio" name="delivery">
+                    <span>
+              <div>
+                <img src="img/order/newPost.svg" alt="">
+              </div>
+              <p class="p1">Кур’єр по Києву (в поштову скриньку або консьєржу)</p>
+            </span>
+                </label>
+            </div>
+        </form>
+        <div class="online">
+            <a href="#">
+                <h5>Оплатити замовлення онлайн</h5>
+            </a>
+            <div class="cards">
+                <div>
+                    <img src="img/order/liqpay.svg" alt="">
+                </div>
+                <div href="#">
+                    <img src="img/order/visa.svg" alt="">
+                </div>
+                <div href="#">
+                    <img src="img/order/mastercard.svg" alt="">
+                </div>
+                <div href="#">
+                    <img src="img/order/24.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
