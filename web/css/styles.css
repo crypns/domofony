@@ -544,3 +544,40 @@ section.video .block .our_channel:hover h6 {
   justify-content: flex-end;
   align-items: center;
 }
+
+.special-color {
+  color: #165E94;
+  margin-bottom: 10px;
+}
+
+#cart-delivery label{
+  cursor: pointer;
+}
+
+.delivery input[type='radio']:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -4px;
+  left: -1px;
+  position: relative;
+  background-color: #fff;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 4px solid #d1d3d1;
+}
+
+.delivery input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -4px;
+    left: -1px;
+    position: relative;
+    background-color: #fff;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 4px solid red;
+}
