@@ -115,7 +115,7 @@ use app\models\Cart;
         <?php if ($cartModel->general_count != 0):?>
         <form action="">
             <div class="fields">
-                <h5>Інформація про покупця</h5>
+                <h5 class="special-color">Інформація про покупця</h5>
                 <div class="input-list">
 
                   <div class="row-input">
@@ -212,7 +212,7 @@ use app\models\Cart;
             </div>
 
             <div class="delivery" id="delivery">
-                <h5>Доставка</h5>
+                <h5 class="special-color">Доставка</h5>
                 <label class="radio">
                     <!--            <input type="radio" name="delivery" id="newPost">-->
                     <?= $form->field($cartModel, 'delivery')
@@ -230,7 +230,7 @@ use app\models\Cart;
 
                 <div class="input-list">
                     <div class="row-input">
-                      <div class="row-input-item special">
+                      <div class="row-input-item">
                         <?= $form->field($cartModel, 'code_post')
                             ->textInput([
                                 'placeholder' => 'Номер відділення',
