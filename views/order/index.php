@@ -90,11 +90,16 @@ use app\models\Cart;
         <div class="total">
             <h5>Разом:</h5>
             <h5 class="quantity total-products-count"><?= $cartModel->general_count ?></h5>
+            <?= $form->field($cartModel, 'general_count')->hiddenInput([
+//                'value' => $cartModel->general_count,
+            ]) ?>
             <h5>
                 <span class="total-products-price">
-                    <?= $cartModel->general_cost ?>
+                    <?= Yii::$app->formatter->asCurrency($cartModel->general_cost) ?>
+                    <?= $form->field($cartModel, 'general_cost')->hiddenInput([
+//                        'value' => $cartModel->general_cost,
+                    ]) ?>
                 </span>
-                ₴
             </h5>
         </div>
     </div>
