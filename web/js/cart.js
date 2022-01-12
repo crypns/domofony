@@ -37,6 +37,15 @@ function productsInfoUpdate() {
     $('.total-products-count').text(count)
   }
 
+  // Added data in inputs
+  if ($('.total-products-price-input')[0]) {
+    $('.total-products-price-input').val(sum)
+  }
+
+  if ($('.total-products-count-input')[0]) {
+    $('.total-products-count-input').val(count)
+  }
+
   if (!sum && !count && !$('.input-for-product')[0]) {
     // Delete order form
     $('.payment').remove()

@@ -85,6 +85,7 @@ section.order .item .cont .name h6 {
   overflow: hidden;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
+  margin-bottom: 0;
 }
 
 section.order .item .cont .price {
@@ -95,6 +96,7 @@ section.order .item .cont .price h6 {
   color: #165E94;
   text-align: center;
   white-space: nowrap;
+  margin-bottom: 0;
 }
 
 section.order .item .cont .delete {
@@ -130,17 +132,15 @@ section.order .total {
           align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-          justify-content: space-between;
+          justify-content: flex-end;
 }
 
 section.order .total h5 {
   text-align: right;
   white-space: nowrap;
-  width: 62%;
 }
 
 section.order .total h5.quantity {
-  width: 124px;
   text-align: center;
 }
 
@@ -464,9 +464,9 @@ section.success a:hover h5 {
     width: max-content;
   }
 
-  section.order .total h5.quantity {
+  /* section.order .total h5.quantity {
     width: 124px;
-  }
+  } */
 
   section.order .total h5.price {
     width: 200px;
@@ -635,4 +635,13 @@ section.success a:hover h5 {
 
 .post-input.active {
   display: flex;
+}
+
+.total-products-count-styles {
+  display: flex;
+  margin-right: 40px;
+}
+
+.total-products-count-styles .quantity {
+  margin-left: 10px;
 }

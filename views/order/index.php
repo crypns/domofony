@@ -86,20 +86,25 @@ use app\models\Cart;
             </div>
         <?php endforeach; ?>
 
-
         <div class="total">
-            <h5>Разом:</h5>
-            <h5 class="quantity total-products-count"><?= $cartModel->general_count ?></h5>
-            <?= $form->field($cartModel, 'general_count')->hiddenInput([
-//                'value' => $cartModel->general_count,
-            ]) ?>
-            <h5>
+          <?= $form->field($cartModel, 'general_count')->hiddenInput([
+                'class' => 'total-products-count-input'
+                // 'value' => $cartModel->general_count,
+          ]) ?>
+          <?= $form->field($cartModel, 'general_cost')->hiddenInput([
+                'class' => 'total-products-price-input'
+                // 'value' => $cartModel->general_cost,
+          ]) ?>
+            <div class="total-products-count-styles">
+              <h5>Разом:</h5>
+              <h5 class="quantity total-products-count"><?= $cartModel->general_count ?></h5>
+            </div>
+
+            <h5 class="total-products-price-styles">
                 <span class="total-products-price">
-                    <?= Yii::$app->formatter->asCurrency($cartModel->general_cost) ?>
-                    <?= $form->field($cartModel, 'general_cost')->hiddenInput([
-//                        'value' => $cartModel->general_cost,
-                    ]) ?>
+                    <?= $cartModel->general_cost ?>
                 </span>
+                ₴
             </h5>
         </div>
     </div>
