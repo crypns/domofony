@@ -1,24 +1,24 @@
 <?php
 
 return [
-    'popular-product0' => [
-        'name' => 'IP видеодомофон',
-        'product_code' => 'Slinex Mira',
-        'description' => '10” экран монитора выделяет данный IP видеодомофон среди многих других.',
-        'image' => 'QpclWEe7mY0Xypk2H83XDghAsADY47qS.png',
-        'product_link' => 'https://www.domofony.com.ua/slinex-mira.html',
-        'created_at' => '1970-07-23 01:35:31',
-        'updated_at' => '1974-10-06 15:15:56',
-    ],
-    'popular-product1' => [
-        'name' => 'Вызывная панель',
-        'product_code' => 'Slinex Uma',
-        'description' => 'Uma – это стильная одноабонентская врезная вызывная панель, выполнена в алюминиевом антивандальном корпусе.',
-        'image' => 'clnh0W8AOOF3IGNNc0tZGS9iFAPLGSdE.png',
-        'product_link' => 'https://www.domofony.com.ua/slinex-uma.html',
-        'created_at' => '1979-07-02 22:07:44',
-        'updated_at' => '1987-07-17 01:31:14',
-    ],
+    // 'popular-product0' => [
+    //     'name' => 'IP видеодомофон',
+    //     'product_code' => 'Slinex Mira',
+    //     'description' => '10” экран монитора выделяет данный IP видеодомофон среди многих других.',
+    //     'image' => 'QpclWEe7mY0Xypk2H83XDghAsADY47qS.png',
+    //     'product_link' => 'https://www.domofony.com.ua/slinex-mira.html',
+    //     'created_at' => '1970-07-23 01:35:31',
+    //     'updated_at' => '1974-10-06 15:15:56',
+    // ],
+    // 'popular-product1' => [
+    //     'name' => 'Вызывная панель',
+    //     'product_code' => 'Slinex Uma',
+    //     'description' => 'Uma – это стильная одноабонентская врезная вызывная панель, выполнена в алюминиевом антивандальном корпусе.',
+    //     'image' => 'clnh0W8AOOF3IGNNc0tZGS9iFAPLGSdE.png',
+    //     'product_link' => 'https://www.domofony.com.ua/slinex-uma.html',
+    //     'created_at' => '1979-07-02 22:07:44',
+    //     'updated_at' => '1987-07-17 01:31:14',
+    // ],
     'popular-product2' => [
         'name' => 'IP Відеодомофон',
         'product_code' => 'AQ-07L White / AQ-07L Gold / AQ-07L Black / AQ-07L Black',
