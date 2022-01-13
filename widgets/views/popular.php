@@ -21,11 +21,15 @@ use yii\bootstrap4\Html;
                         <p class="p2"><?= $popularProduct->product_code?></p>
                         <p class="p1"><?= $popularProduct->description?></p>
                     </div>
+
+                    <?php if ($popularProduct->product_link != null):?>
                     <div class="button">
                         <a href="<?= $popularProduct->product_link?>" target = "_blank">
                             <h6>Детальніше про товар</h6>
                         </a>
                     </div>
+                    <?php endif; ?>
+
                 </div>
             <?php endforeach;?>
         </div>

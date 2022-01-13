@@ -62,7 +62,7 @@ abstract class YoutubeSlider extends \app\custom\ActiveRecord
         return [
             'id' => Yii::t('models', 'ID'),
             'name' => Yii::t('models', 'Name'),
-            'youtube_link' => Yii::t('cruds', 'Youtube Link'),
+            'youtube_link' => Yii::t('models', 'Youtube Link'),
             'created_at' => Yii::t('models', 'Created At'),
             'updated_at' => Yii::t('models', 'Updated At'),
         ];

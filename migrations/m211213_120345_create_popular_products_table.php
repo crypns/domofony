@@ -20,7 +20,7 @@ class m211213_120345_create_popular_products_table extends Migration
             'product_code' => $this->string()->notNull()->comment('Код товара'),
             'description' => $this->string()->notNull()->comment('Описание товара'),
             'image' => $this->string()->notNull()->comment('Изображение товара'),
-            'product_link' => $this->string()->notNull()->comment('Ссылка на продукт'),
+            'product_link' => $this->string()->comment('Ссылка на продукт'),
         ], $timestampColumns));
     }
 

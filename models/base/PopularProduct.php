@@ -52,7 +52,7 @@ abstract class PopularProduct extends \app\custom\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'product_code', 'description', 'image', 'product_link'], 'required'],
+            [['name', 'product_code', 'description', 'image'], 'required'],
             [['name', 'product_code', 'description', 'image', 'product_link'], 'string', 'max' => 255]
         ];
     }
