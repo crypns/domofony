@@ -3,6 +3,8 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use vova07\imperavi\Widget;
+
 
 /**
 * @var yii\web\View $this
@@ -36,7 +38,18 @@ use yii\helpers\Url;
     <?= $form->field($model, 'address')->textArea(['maxlength' => true, 'rows'=>'3']) ?>
     <!-- end attribute -->
     <!-- attribute `description` -->
-    <?= $form->field($model, 'description')->textArea(['maxlength' => true, 'rows'=>'4']) ?>
+    <?= $form->field($model, 'description')->widget(Widget::className(), [
+        'settings' => [
+            // 'lang' => 'uk',
+            'minHeight' => 200,
+            'clips' => [
+                ['Lorem ipsum...', 'Lorem...'],
+                ['red', '<span class="label-red">red</span>'],
+                ['green', '<span class="label-green">green</span>'],
+                ['blue', '<span class="label-blue">blue</span>'],
+            ],
+        ],
+    ]); ?>
     <!-- end attribute -->
 
     <?= Html::submitButton(

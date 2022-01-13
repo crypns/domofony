@@ -15,6 +15,7 @@ $config = array_merge($language, [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@admin' => '@app/modules/admin',
+        '@vova07/imperavi/assets' => '@vendor/vova07/yii2-imperavi-widget/src/assets',
 
     ],
     'components' => [

@@ -31,7 +31,8 @@
         "aalaap/faker-youtube": "^2.0",
         "kartik-v/yii2-field-range": "dev-master",
         "kartik-v/yii2-widget-datetimepicker": "dev-master",
-        "kartik-v/yii2-icons": "@dev"
+        "kartik-v/yii2-icons": "@dev",
+        "vova07/yii2-imperavi-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
