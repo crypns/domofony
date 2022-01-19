@@ -39,6 +39,15 @@ class Cart extends BaseCart
     public $floor;
     public $code_post;
 
+    public function beforeDelete()
+    {
+        $flag = true;
+        foreach ($this->cartProducts as $cartProductModel) {
+            $flag &= $cartProductModel->delete();
+        }
+        return $flag && parent::beforeDelete();
+    }
+
     public function behaviors()
     {
         return array_merge(parent::behaviors(), [

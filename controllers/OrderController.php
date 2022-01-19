@@ -77,6 +77,7 @@ class OrderController extends Controller
                 TelegramHandler::sendMessageCartFormed($cartModel);
 
                 return LiqpayHandler::createPayment($cartModel);
+
             }
         }
 

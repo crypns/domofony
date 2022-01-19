@@ -20,12 +20,12 @@ class LiqpayHandler {
 
         // создаем запрос платежа
         $request = $liqpay->checkoutRequest([
-            'returnUrl' => Yii::$app->urlManager->createAbsoluteUrl('/site/index'),
+            'callbackUrl' => Yii::$app->urlManager->createAbsoluteUrl('/site/success'),
+            'returnUrl' => Yii::$app->urlManager->createAbsoluteUrl('/site/success'),
             'orderId' => $cartModel->id,
             'amount' => $cartModel->general_cost,
             'description' => 'Оплата заказа №' . $cartModel->id,
         ]);
-        //Yii::$app->urlManager->createAbsoluteUrl('/site/success'),
         // переадресуем клиента на страницу оплаты
         return $request->redirect();
     }

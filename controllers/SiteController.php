@@ -308,9 +308,6 @@ class SiteController extends Controller
             'sliders' => $sliders,
             'complexProducts' => $complexProducts,
         ]);
-
-
-
     }
 
 
@@ -332,18 +329,4 @@ class SiteController extends Controller
 
         return json_encode($return);
     }
-
-
-    public function actionSuccess()
-    {
-
-        return $this->render('success',[
-
-        ]);
-    }
-    public function actionMakePurchases()
-    {
-
-    }
-
 }
