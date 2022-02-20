@@ -41,6 +41,18 @@ use vova07\imperavi\Widget;
     <?= $form->field($model, 'description')->widget(Widget::className(), [
         'settings' => [
             // 'lang' => 'uk',
+
+            'buttonSource' => true,
+            'convertDivs' => false,
+            'replaceDivs' => false,
+            'replaceTags' => false,
+
+            'removeEmptyTags' => false,
+            'paragraphize' => false,
+            'pastePlainText'  => true,
+            'toolbarFixedBox' => true,
+
+            
             'minHeight' => 200,
             'clips' => [
                 ['Lorem ipsum...', 'Lorem...'],
