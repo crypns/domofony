@@ -16,7 +16,7 @@ class Module extends \yii\base\Module
 
     public function beforeAction($action)
     {
-        Yii::$app->errorHandler->errorAction = Url::to(['/admin/default/error']);
+        // Yii::$app->errorHandler->errorAction = Url::to(['/admin/default/error']);
         Yii::$app->controller->layout = 'main';
 
         if (!parent::beforeAction($action)) {
@@ -24,7 +24,7 @@ class Module extends \yii\base\Module
         }
         
         if (!Yii::$app->user->can('admin')) {
-            throw new \yii\web\ForbiddenHttpException(Yii::t('app', 'Вам сюда нельзя.'));
+            throw new \yii\web\NotFoundHttpException();
         }
         return true;
     }

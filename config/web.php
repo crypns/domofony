@@ -76,7 +76,7 @@ $config = array_merge($language, [
                 'api/<controller>/<action>' => 'api/<controller>/<action>',
 
                 '' => 'site/index',
-                '<action:[\w-]+>' => 'site/<action>'
+                '<action:[\w-]+>' => 'site/<action>',
                 '<controller:[\w-]+>' => '<controller>/index',
                 '<controller:[\w-]+>/<id:\d+>' => '<controller>/view',
                 '<controller:[\w-]+>/<id:\d+>/<action:[\w-]+>' => '<controller>/<action>',
