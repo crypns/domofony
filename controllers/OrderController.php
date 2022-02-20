@@ -23,6 +23,20 @@ use app\handlers\TelegramHandler;
 class OrderController extends Controller
 {
 
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         $session = Yii::$app->session;
