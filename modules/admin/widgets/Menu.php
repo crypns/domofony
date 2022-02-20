@@ -68,7 +68,7 @@ class Menu extends Widget
                 [
                     'name' => Yii::t('app', 'Logout'),
                     'url' => Url::to(['/site/logout']),
-                    'can' => Yii::$app->user->can('@'),
+                    'can' => !Yii::$app->user->isGuest,
                 ],
             ],
         ];

@@ -52,7 +52,6 @@ use vova07\imperavi\Widget;
             'pastePlainText'  => true,
             'toolbarFixedBox' => true,
 
-            
             'minHeight' => 200,
             'clips' => [
                 ['Lorem ipsum...', 'Lorem...'],
