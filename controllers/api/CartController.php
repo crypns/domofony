@@ -39,6 +39,10 @@ class CartController extends \app\custom\BaseApiController
                         return \Yii::$app->user->can($permissionName, ['route' => true]);
                     },
                 ],
+                [
+                    'allow' => true,
+                    'actions' => ['add-to-cart'],
+                ],
             ]
         ];
     }
