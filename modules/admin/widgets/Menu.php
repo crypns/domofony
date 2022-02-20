@@ -65,6 +65,11 @@ class Menu extends Widget
                     'url' => Url::to(['setting/update?id=1']),
                     'can' => Yii::$app->user->can('app_setting_index'),
                 ],
+                [
+                    'name' => Yii::t('app', 'Logout'),
+                    'url' => Url::to(['/site/logout']),
+                    'can' => Yii::$app->user->can('@'),
+                ],
             ],
         ];
         
