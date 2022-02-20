@@ -30,6 +30,7 @@ class OrderController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
+                        'actions' => ['index', 'success'],
                         'allow' => true,
                     ],
                 ],
