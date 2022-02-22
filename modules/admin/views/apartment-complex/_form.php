@@ -48,7 +48,7 @@ use vova07\imperavi\Widget;
             'replaceTags' => false,
 
             'removeEmptyTags' => false,
-            'paragraphize' => false,
+            'paragraphize' => true,
             'pastePlainText'  => true,
             'toolbarFixedBox' => true,
 
